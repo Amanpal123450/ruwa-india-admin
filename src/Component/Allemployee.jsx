@@ -37,17 +37,22 @@ const fetchEmployees = async () => {
 
 
   // Delete employee
-  const deleteEmployee = async (_id) => {
-    if (!window.confirm("Are you sure you want to delete this employee?")) return;
+ const deleteEmployee = async (id) => {
+  if (!window.confirm("Are you sure you want to delete this employee?")) return;
 
-    try {
-      await axios.delete(`http://localhost:5000/api/employees/${_id}`);
-      setMessage("✅ Employee deleted successfully!");
-      setEmployees(employees.filter((emp) => emp._id !== _id));
-    } catch (err) {
-      setMessage("❌ Error deleting employee: " + err.message);
-    }
-  };
+  try {
+    const token=localStorage.getItem('token')
+    await axios.delete(`http://localhost:8000/api/admin/employee/${id}`,{
+      headers:{Authorization: `Bearer ${token}`}
+    });
+    setMessage("✅ Employee deleted successfully!");
+    // FIX: check _id instead of id
+    setEmployees(employees.filter((emp) => emp._id !== id));
+  } catch (err) {
+    setMessage("❌ Error deleting employee: " + err.message);
+  }
+};
+
 
   useEffect(() => {
     fetchEmployees();
