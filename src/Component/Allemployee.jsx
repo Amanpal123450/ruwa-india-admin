@@ -42,7 +42,7 @@ const fetchEmployees = async () => {
 
   try {
     const token=localStorage.getItem('token')
-    await axios.delete(`http://localhost:8000/api/admin/employee/${id}`,{
+    await axios.delete(`https://ruwa-backend.onrender.com/api/admin/employee/${id}`,{
       headers:{Authorization: `Bearer ${token}`}
     });
     setMessage("✅ Employee deleted successfully!");
