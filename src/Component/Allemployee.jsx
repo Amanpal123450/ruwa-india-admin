@@ -10,7 +10,7 @@ export default function Allemployee() {
  // Fetch employees from backend
 const fetchEmployees = async () => {
   try {
-    const res = await axios.get("https://ruwa-backend.onrender.com/api/users/employees", {
+    const res = await axios.get("https://ruwa-backend.onrender.com/api/admin/employees", {
       method: "GET",
         headers: { Authorization: `Bearer ${token}` },
     });

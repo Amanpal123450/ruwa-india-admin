@@ -9,7 +9,7 @@ const SewaLeads = () => {
 
   const fetchLeads = async () => {
     try {
-      const response = await fetch('http://192.168.1.6:5000/api/leads', {
+      const response = await fetch('https://ruwa-backend.onrender.com/api/leads', {
         credentials: 'include',
       });
 
