@@ -54,7 +54,7 @@
 //   const handleSubmit = async (e) => {
 //     e.preventDefault();
 //     try {
-//       await axios.post("https://last-2-ltig.onrender.com/api/employees/create", formData);
+//       await axios.post("https://ruwa-backend.onrender.com/api/employees/create", formData);
 //       alert("✅ Employee Created Successfully!");
 //       setFormData({ name: "", employeeId: "", email: "", phone: "", password: "" });
 //     } catch (err) {
@@ -154,7 +154,10 @@ export default function CreateEmployee() {
     employeeId: "",
     email: "",
     phone: "",
-    password: ""
+    password: "",
+    department:"",
+    position:"",
+    address:""
   });
  const token = localStorage.getItem("token"); // 👈 Admin token stored at login
   const [errors, setErrors] = useState({});
@@ -206,7 +209,7 @@ export default function CreateEmployee() {
     
 
     await axios.post(
-      "https://last-2-ltig.onrender.com/api/employee/create",
+      "https://ruwa-backend.onrender.com/api/admin/create",
       formData,
       {
         headers: {
@@ -300,7 +303,42 @@ export default function CreateEmployee() {
                   />
                   <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
                 </Form.Group>
-
+                <Form.Group className="mb-3">
+                  <Form.Label>Position</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="position"
+                    placeholder="Enter position"
+                    value={formData.position}
+                    onChange={handleChange}
+                    // isInvalid={!!errors.password}
+                  />
+                  {/* <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback> */}
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label>Address</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="address"
+                    placeholder="Enter address"
+                    value={formData.address}
+                    onChange={handleChange}
+                    // isInvalid={!!errors.password}
+                  />
+                  {/* <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback> */}
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label>Department</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="department"
+                    placeholder="Enter department"
+                    value={formData.department}
+                    onChange={handleChange}
+                   
+                  />
+                  {/* <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback> */}
+                </Form.Group>
                 <div className="d-grid">
                   <Button variant="primary" size="lg" type="submit" className="rounded-3">
                     Create Employee
