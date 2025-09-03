@@ -83,7 +83,7 @@ const fetchEmployees = async () => {
                   <tr key={emp._id}>
                     <td>{index + 1}</td>
                     <td>{emp.name}</td>
-                    <td>{emp._id}</td>
+                    <td>{emp.employeeId}</td>
                     <td>{emp.email}</td>
                     <td>{emp.phone}</td>
                     <td>
