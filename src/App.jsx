@@ -91,6 +91,7 @@
 // export default App;
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import './App.css'; // Ensure you have some basic styles for layout
 
 import Sidebar from './Component/Sidebar';
 import Navbar from './Component/Navbar';

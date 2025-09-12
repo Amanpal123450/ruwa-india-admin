@@ -1,934 +1,19 @@
-// // // import React, { useEffect, useState } from 'react';
-// // import axios from 'axios';
-// // import { useEffect, useState } from 'react';
-// // import { useNavigate } from 'react-router-dom';
-
-// // const Detailspage = () => {
-// //   const navigate = useNavigate();
-// //   const [profile, setProfile] = useState(null);
-
-// //   useEffect(() => {
-// //     const fetchProfile = async () => {
-// //       try {
-// //         const res = await axios.get('http://192.168.1.6:5000/api/admin/profile');
-// //         setProfile(res.data);
-// //       } catch (error) {
-// //         console.error('Error fetching profile:', error);
-// //       }
-// //     };
-
-// //     fetchProfile();
-// //   }, []);
-
-// //   if (!profile) {
-// //     return <div className="p-4">Loading...</div>;
-// //   }
-
-// //   return (
-// //     <div className="d-flex vh-100 bg-light">
-// //       <div className="flex-grow-1 p-4 overflow-auto">
-// //         {/* Top Bar */}
-// //         <div className="d-flex justify-content-between align-items-center mb-4">
-// //           <div className="p-2 gap-2">
-// //             <img src="https://i.pravatar.cc/40" alt="Avatar" className="rounded-circle" />
-// //             <span className="fw-semibold">{profile.full_name}</span>
-// //           </div>
-// //           <div className="d-flex justify-content-between align-items-center gap-2">
-// //             <button className="btn btn-sm btn-outline-danger" onClick={() => navigate('/profile')}>
-// //               Edit
-// //             </button>
-// //           </div>
-// //         </div>
-
-// //         {/* Profile + Address */}
-// //         <div className="row g-3 mb-3">
-// //           <div className="col-md-6">
-// //             <div className="card p-3">
-// //               <div className="d-flex justify-content-between align-items-start">
-// //                 <div>
-// //                   <img src="https://i.pravatar.cc/60" className="rounded-circle mb-2" alt="profile" />
-// //                   <h6 className="fw-bold mb-0">{profile.full_name}</h6>
-// //                   <small className="text-muted">{profile.phone}</small>
-// //                 </div>
-// //                 <small>Joined {profile.created_at ? profile.created_at.slice(0, 10) : 'N/A'}</small>
-// //               </div>
-// //               <button className="btn btn-sm btn-outline-secondary mt-3 ms-auto">Edit</button>
-// //             </div>
-// //           </div>
-
-// //           <div className="col-md-6">
-// //             <div className="card p-3">
-// //               <h6 className="fw-bold mb-2">Address <span className="badge bg-primary ms-2">Primary</span></h6>
-// //               <p className="mb-1">{profile.address}</p>
-// //               <p className="mb-0">{profile.secondary_address || ''}</p>
-// //               <button className="btn btn-sm btn-outline-secondary mt-3 ms-auto">Edit</button>
-// //             </div>
-// //           </div>
-// //         </div>
-
-// //         {/* Emails + Phone */}
-// //         <div className="row g-3 mb-3">
-// //           <div className="col-md-6">
-// //             <div className="card p-3">
-// //               <h6 className="fw-bold mb-2">Emails</h6>
-// //               <span className="badge bg-secondary me-2">Primary</span> {profile.email}
-// //               <div className="d-flex gap-2 mt-3">
-// //                 <button className="btn btn-sm btn-outline-secondary mt-3 ms-auto">Edit</button>
-// //               </div>
-// //             </div>
-// //           </div>
-
-// //           <div className="col-md-6">
-// //             <div className="card p-3">
-// //               <h6 className="fw-bold mb-2">Phone Number</h6>
-// //               <span className="badge bg-secondary me-2">Primary</span> {profile.phone}
-// //               <button className="btn btn-sm btn-outline-secondary mt-3 ms-auto">Edit</button>
-// //             </div>
-// //           </div>
-// //         </div>
-
-// //         {/* Account Options */}
-// //         <div className="card p-3">
-// //           <h6 className="fw-bold mb-3">Account Options</h6>
-// //           <div className="row">
-// //             <div className="col-md-4">
-// //               <p className="mb-1"><strong>Language</strong></p>
-// //               <p className="text-muted">{profile.language}</p>
-// //             </div>
-// //             <div className="col-md-4">
-// //               <p className="mb-1"><strong>Time Zone</strong></p>
-// //               <p className="text-muted">{profile.time_zone}</p>
-// //             </div>
-// //             <div className="col-md-4">
-// //               <p className="mb-1"><strong>Nationality</strong></p>
-// //               <p className="text-muted">{profile.nationality}</p>
-// //             </div>
-// //             <div className="col-md-4">
-// //               <p className="mb-1"><strong>Merchant ID</strong></p>
-// //               <p className="text-muted">{profile.merchant_id}</p>
-// //             </div>
-// //             <div className="col-md-4">
-// //               <p className="mb-1 text-danger"><strong>Close your account</strong></p>
-// //             </div>
-// //           </div>
-// //         </div>
-
-// //       </div>
-// //     </div>
-// //   );
-// // };
-
-// // export default Detailspage;
-// import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
-// import { useNavigate } from 'react-router-dom';
-
-// const Detailspage = () => {
-//   const navigate = useNavigate();
-//   const [profile, setProfile] = useState(null);
-
-//   useEffect(() => {
-//     const fetchProfile = async () => {
-//       try {
-//         const token = localStorage.getItem('token');
-//         const res = await axios.get('http://192.168.1.6:5000/api/admin/profile', {
-//           headers: {
-//             Authorization: `Bearer ${token}`,
-//           },
-//         });
-//         setProfile(res.data);
-//       } catch (error) {
-//         console.error('Error fetching profile:', error);
-//       }
-//     };
-
-//     fetchProfile();
-//   }, []);
-
-//   if (!profile) {
-//     return <div className="p-4">Loading...</div>;
-//   }
-
-//   return (
-//     <div className="d-flex vh-100 bg-light">
-//       <div className="flex-grow-1 p-4 overflow-auto">
-//         {/* Top Bar */}
-//         <div className="d-flex justify-content-between align-items-center mb-4">
-//           <div className="p-2 gap-2">
-//             <img src="https://i.pravatar.cc/40" alt="Avatar" className="rounded-circle" />
-//             <span className="fw-semibold">{profile.full_name}</span>
-//           </div>
-//           <div className="d-flex justify-content-between align-items-center gap-2">
-//             <button className="btn btn-sm btn-outline-danger" onClick={() => navigate('/profile')}>
-//               Edit
-//             </button>
-//           </div>
-//         </div>
-
-//         {/* Profile + Address */}
-//         <div className="row g-3 mb-3">
-//           <div className="col-md-6">
-//             <div className="card p-3">
-//               <div className="d-flex justify-content-between align-items-start">
-//                 <div>
-//                   <img src="https://i.pravatar.cc/60" className="rounded-circle mb-2" alt="profile" />
-//                   <h6 className="fw-bold mb-0">{profile.full_name}</h6>
-//                   <small className="text-muted">{profile.phone}</small>
-//                 </div>
-//                 <small>Joined {profile.created_at ? profile.created_at.slice(0, 10) : 'N/A'}</small>
-//               </div>
-//               <button className="btn btn-sm btn-outline-secondary mt-3 ms-auto">Edit</button>
-//             </div>
-//           </div>
-
-//           <div className="col-md-6">
-//             <div className="card p-3">
-//               <h6 className="fw-bold mb-2">Address <span className="badge bg-primary ms-2">Primary</span></h6>
-//               <p className="mb-1">{profile.address}</p>
-//               <p className="mb-0">{profile.secondary_address || ''}</p>
-//               <button className="btn btn-sm btn-outline-secondary mt-3 ms-auto">Edit</button>
-//             </div>
-//           </div>
-//         </div>
-
-//         {/* Emails + Phone */}
-//         <div className="row g-3 mb-3">
-//           <div className="col-md-6">
-//             <div className="card p-3">
-//               <h6 className="fw-bold mb-2">Emails</h6>
-//               <span className="badge bg-secondary me-2">Primary</span> {profile.email}
-//               <div className="d-flex gap-2 mt-3">
-//                 <button className="btn btn-sm btn-outline-secondary mt-3 ms-auto">Edit</button>
-//               </div>
-//             </div>
-//           </div>
-
-//           <div className="col-md-6">
-//             <div className="card p-3">
-//               <h6 className="fw-bold mb-2">Phone Number</h6>
-//               <span className="badge bg-secondary me-2">Primary</span> {profile.phone}
-//               <button className="btn btn-sm btn-outline-secondary mt-3 ms-auto">Edit</button>
-//             </div>
-//           </div>
-//         </div>
-
-//         {/* Account Options */}
-//         <div className="card p-3">
-//           <h6 className="fw-bold mb-3">Account Options</h6>
-//           <div className="row">
-//             <div className="col-md-4">
-//               <p className="mb-1"><strong>Language</strong></p>
-//               <p className="text-muted">{profile.language}</p>
-//             </div>
-//             <div className="col-md-4">
-//               <p className="mb-1"><strong>Time Zone</strong></p>
-//               <p className="text-muted">{profile.time_zone}</p>
-//             </div>
-//             <div className="col-md-4">
-//               <p className="mb-1"><strong>Nationality</strong></p>
-//               <p className="text-muted">{profile.nationality}</p>
-//             </div>
-//             <div className="col-md-4">
-//               <p className="mb-1"><strong>Merchant ID</strong></p>
-//               <p className="text-muted">{profile.merchant_id}</p>
-//             </div>
-//             <div className="col-md-4">
-//               <p className="mb-1 text-danger"><strong>Close your account</strong></p>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// // export default Detailspage;
-// import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
-// import { useNavigate } from 'react-router-dom';
-
-// const Detailspage = () => {
-//   const navigate = useNavigate();
-//   const [profile, setProfile] = useState(null);
-
-//   useEffect(() => {
-//     const fetchProfile = async () => {
-//       try {
-//         const token = localStorage.getItem('token');
-
-//         if (!token) {
-//           console.warn('No token found. Redirecting to login...');
-//           navigate('/login');
-//           return;
-//         }
-
-//         const res = await axios.get('http://192.168.1.6:5000/api/admin/profile', {
-//           headers: {
-//             Authorization: `Bearer ${token}`,
-//           },
-//         });
-
-//         setProfile(res.data);
-//       } catch (error) {
-//         console.error('Error fetching profile:', error);
-//         if (error.response && error.response.status === 401) {
-//           alert('Session expired or unauthorized. Please login again.');
-//           navigate('/login');
-//         }
-//       }
-//     };
-
-//     fetchProfile();
-//   }, [navigate]);
-
-//   if (!profile) {
-//     return <div className="p-4">Loading...</div>;
-//   }
-
-//   return (
-//     <div className="d-flex vh-100 bg-light">
-//       <div className="flex-grow-1 p-4 overflow-auto">
-//         <div className="d-flex justify-content-between align-items-center mb-4">
-//           <div className="p-2 gap-2">
-//             <img src="https://i.pravatar.cc/40" alt="Avatar" className="rounded-circle" />
-//             <span className="fw-semibold">{profile.full_name}</span>
-//           </div>
-//           <div className="d-flex justify-content-between align-items-center gap-2">
-//             <button className="btn btn-sm btn-outline-danger" onClick={() => navigate('/profile')}>
-//               Edit
-//             </button>
-//           </div>
-//         </div>
-
-//         {/* Profile + Address */}
-//         <div className="row g-3 mb-3">
-//           <div className="col-md-6">
-//             <div className="card p-3">
-//               <div className="d-flex justify-content-between align-items-start">
-//                 <div>
-//                   <img src="https://i.pravatar.cc/60" className="rounded-circle mb-2" alt="profile" />
-//                   <h6 className="fw-bold mb-0">{profile.full_name}</h6>
-//                   <small className="text-muted">{profile.phone}</small>
-//                 </div>
-//                 <small>Joined {profile.created_at ? profile.created_at.slice(0, 10) : 'N/A'}</small>
-//               </div>
-//               <button className="btn btn-sm btn-outline-secondary mt-3 ms-auto">Edit</button>
-//             </div>
-//           </div>
-
-//           <div className="col-md-6">
-//             <div className="card p-3">
-//               <h6 className="fw-bold mb-2">Address <span className="badge bg-primary ms-2">Primary</span></h6>
-//               <p className="mb-1">{profile.address}</p>
-//               <p className="mb-0">{profile.secondary_address || ''}</p>
-//               <button className="btn btn-sm btn-outline-secondary mt-3 ms-auto">Edit</button>
-//             </div>
-//           </div>
-//         </div>
-
-//         {/* Emails + Phone */}
-//         <div className="row g-3 mb-3">
-//           <div className="col-md-6">
-//             <div className="card p-3">
-//               <h6 className="fw-bold mb-2">Emails</h6>
-//               <span className="badge bg-secondary me-2">Primary</span> {profile.email}
-//               <div className="d-flex gap-2 mt-3">
-//                 <button className="btn btn-sm btn-outline-secondary mt-3 ms-auto">Edit</button>
-//               </div>
-//             </div>
-//           </div>
-
-//           <div className="col-md-6">
-//             <div className="card p-3">
-//               <h6 className="fw-bold mb-2">Phone Number</h6>
-//               <span className="badge bg-secondary me-2">Primary</span> {profile.phone}
-//               <button className="btn btn-sm btn-outline-secondary mt-3 ms-auto">Edit</button>
-//             </div>
-//           </div>
-//         </div>
-
-//         {/* Account Options */}
-//         <div className="card p-3">
-//           <h6 className="fw-bold mb-3">Account Options</h6>
-//           <div className="row">
-//             <div className="col-md-4">
-//               <p className="mb-1"><strong>Language</strong></p>
-//               <p className="text-muted">{profile.language}</p>
-//             </div>
-//             <div className="col-md-4">
-//               <p className="mb-1"><strong>Time Zone</strong></p>
-//               <p className="text-muted">{profile.time_zone}</p>
-//             </div>
-//             <div className="col-md-4">
-//               <p className="mb-1"><strong>Nationality</strong></p>
-//               <p className="text-muted">{profile.nationality}</p>
-//             </div>
-//             <div className="col-md-4">
-//               <p className="mb-1"><strong>Merchant ID</strong></p>
-//               <p className="text-muted">{profile.merchant_id}</p>
-//             </div>
-//             <div className="col-md-4">
-//               <p className="mb-1 text-danger"><strong>Close your account</strong></p>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Detailspage;
-
-
-
-
-// import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
-// import { useNavigate } from 'react-router-dom';
-
-// const Detailspage = () => {
-//   const navigate = useNavigate();
-//   const [profile, setProfile] = useState(null);
-
-//   useEffect(() => {
-//     const fetchProfile = async () => {
-//       try {
-//         const token = localStorage.getItem('token');
-//         console.log("🔐 Token from localStorage:", token); // ✅ Debug
-
-//         if (!token) {
-//           alert('No token found. Please login.');
-//           navigate('/login');
-//           return;
-//         }
-
-//         const res = await axios.get('http://192.168.1.6:5000/api/admin/profile', {
-//           headers: {
-//             Authorization: `Bearer ${token}`, // ✅ Must be exact
-//           },
-//         });
-
-//         console.log("✅ Profile fetched:", res.data);
-//         setProfile(res.data);
-//       } catch (error) {
-//         console.error('❌ Error fetching profile:', error);
-
-//         if (error.response?.status === 401) {
-//           alert('Session expired or unauthorized. Please login again.');
-//           localStorage.removeItem('token'); // ⛔ Clear bad token
-//           navigate('/login');
-//         }
-//       }
-//     };
-
-//     fetchProfile();
-//   }, [navigate]);
-
-//   if (!profile) {
-//     return <div className="p-4">Loading...</div>;
-//   }
-
-//   return (
-//     <div className="d-flex vh-100 bg-light">
-//       <div className="flex-grow-1 p-4 overflow-auto">
-//         <div className="d-flex justify-content-between align-items-center mb-4">
-//           <div className="p-2 gap-2">
-//             <img src="https://i.pravatar.cc/40" alt="Avatar" className="rounded-circle" />
-//             <span className="fw-semibold">{profile.full_name}</span>
-//           </div>
-//           <button className="btn btn-sm btn-outline-danger" onClick={() => navigate('/profile')}>
-//             Edit
-//           </button>
-//         </div>
-
-//         {/* Profile + Address */}
-//         <div className="row g-3 mb-3">
-//           <div className="col-md-6">
-//             <div className="card p-3">
-//               <div className="d-flex justify-content-between align-items-start">
-//                 <div>
-//                   <img src="https://i.pravatar.cc/60" className="rounded-circle mb-2" alt="profile" />
-//                   <h6 className="fw-bold mb-0">{profile.full_name}</h6>
-//                   <small className="text-muted">{profile.phone}</small>
-//                 </div>
-//                 <small>Joined {profile.created_at?.slice(0, 10) || 'N/A'}</small>
-//               </div>
-//               <button className="btn btn-sm btn-outline-secondary mt-3 ms-auto">Edit</button>
-//             </div>
-//           </div>
-
-//           <div className="col-md-6">
-//             <div className="card p-3">
-//               <h6 className="fw-bold mb-2">Address <span className="badge bg-primary ms-2">Primary</span></h6>
-//               <p className="mb-1">{profile.address}</p>
-//               <p className="mb-0">{profile.secondary_address || ''}</p>
-//               <button className="btn btn-sm btn-outline-secondary mt-3 ms-auto">Edit</button>
-//             </div>
-//           </div>
-//         </div>
-
-//         {/* Emails + Phone */}
-//         <div className="row g-3 mb-3">
-//           <div className="col-md-6">
-//             <div className="card p-3">
-//               <h6 className="fw-bold mb-2">Emails</h6>
-//               <span className="badge bg-secondary me-2">Primary</span> {profile.email}
-//               <div className="d-flex gap-2 mt-3">
-//                 <button className="btn btn-sm btn-outline-secondary mt-3 ms-auto">Edit</button>
-//               </div>
-//             </div>
-//           </div>
-
-//           <div className="col-md-6">
-//             <div className="card p-3">
-//               <h6 className="fw-bold mb-2">Phone Number</h6>
-//               <span className="badge bg-secondary me-2">Primary</span> {profile.phone}
-//               <button className="btn btn-sm btn-outline-secondary mt-3 ms-auto">Edit</button>
-//             </div>
-//           </div>
-//         </div>
-
-//         {/* Account Options */}
-//         <div className="card p-3">
-//           <h6 className="fw-bold mb-3">Account Options</h6>
-//           <div className="row">
-//             <div className="col-md-4">
-//               <p className="mb-1"><strong>Language</strong></p>
-//               <p className="text-muted">{profile.language}</p>
-//             </div>
-//             <div className="col-md-4">
-//               <p className="mb-1"><strong>Time Zone</strong></p>
-//               <p className="text-muted">{profile.time_zone}</p>
-//             </div>
-//             <div className="col-md-4">
-//               <p className="mb-1"><strong>Nationality</strong></p>
-//               <p className="text-muted">{profile.nationality}</p>
-//             </div>
-//             <div className="col-md-4">
-//               <p className="mb-1"><strong>Merchant ID</strong></p>
-//               <p className="text-muted">{profile.merchant_id}</p>
-//             </div>
-//             <div className="col-md-4">
-//               <p className="mb-1 text-danger"><strong>Close your account</strong></p>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Detailspage;
-
-// import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
-// import { useNavigate } from 'react-router-dom';
-
-// const Detailspage = () => {
-//   const navigate = useNavigate();
-//   const [profile, setProfile] = useState(null);
-
-//   useEffect(() => {
-//     const fetchProfile = async () => {
-//       try {
-//         const token = localStorage.getItem('token');
-//         console.log("🔐 Token from localStorage:", token);
-
-//         if (!token) {
-//           alert('No token found. Please login.');
-//           navigate('/login');
-//           return;
-//         }
-
-//         const res = await axios.get('http://192.168.1.6:5000/api/admin/profile', {
-//           headers: {
-//             Authorization: `Bearer ${token}`,
-//           },
-//         });
-
-//         console.log("✅ Profile fetched:", res.data);
-//         setProfile(res.data);
-//       } catch (error) {
-//         console.error('❌ Error fetching profile:', error);
-
-//         if (error.response?.status === 401) {
-//           alert('Session expired or unauthorized. Please login again.');
-//           localStorage.removeItem('token');
-//           navigate('/login');
-//         }
-//       }
-//     };
-
-//     fetchProfile();
-//   }, [navigate]);
-
-//   if (!profile) {
-//     return <div className="p-4">Loading profile...</div>;
-//   }
-
-//   return (
-//     <div className="d-flex vh-100 bg-light">
-//       <div className="flex-grow-1 p-4 overflow-auto">
-//         {/* Header */}
-//         <div className="d-flex justify-content-between align-items-center mb-4">
-//           <div className="p-2 gap-2">
-//             <img src="https://i.pravatar.cc/40" alt="Avatar" className="rounded-circle" />
-//             <span className="fw-semibold">{profile.full_name || 'N/A'}</span>
-//           </div>
-//           <button className="btn btn-sm btn-outline-danger" onClick={() => navigate('/profile')}>
-//             Edit
-//           </button>
-//         </div>
-
-//         {/* Profile + Address */}
-//         <div className="row g-3 mb-3">
-//           <div className="col-md-6">
-//             <div className="card p-3">
-//               <h6 className="fw-bold mb-2">Personal Info</h6>
-//               <p><strong>Name:</strong> {profile.full_name || 'N/A'}</p>
-//               <p><strong>Phone:</strong> {profile.phone || 'N/A'}</p>
-//               <p><strong>Email:</strong> {profile.email || 'N/A'}</p>
-//               <button className="btn btn-sm btn-outline-secondary mt-3 ms-auto">Edit</button>
-//             </div>
-//           </div>
-
-//           <div className="col-md-6">
-//             <div className="card p-3">
-//               <h6 className="fw-bold mb-2">Address</h6>
-//               <p>{profile.address || 'No address provided'}</p>
-//               <button className="btn btn-sm btn-outline-secondary mt-3 ms-auto">Edit</button>
-//             </div>
-//           </div>
-//         </div>
-
-//         {/* Account Options */}
-//         <div className="card p-3 mb-3">
-//           <h6 className="fw-bold mb-3">Account Preferences</h6>
-//           <div className="row">
-//             <div className="col-md-4">
-//               <p className="mb-1"><strong>Language</strong></p>
-//               <p className="text-muted">{profile.language || 'N/A'}</p>
-//             </div>
-//             <div className="col-md-4">
-//               <p className="mb-1"><strong>Time Zone</strong></p>
-//               <p className="text-muted">{profile.time_zone || 'N/A'}</p>
-//             </div>
-//             <div className="col-md-4">
-//               <p className="mb-1"><strong>Nationality</strong></p>
-//               <p className="text-muted">{profile.nationality || 'N/A'}</p>
-//             </div>
-//             <div className="col-md-4 mt-3">
-//               <p className="mb-1"><strong>Merchant ID</strong></p>
-//               <p className="text-muted">{profile.merchant_id || 'N/A'}</p>
-//             </div>
-//             <div className="col-md-4 mt-3">
-//               <p className="mb-1 text-danger"><strong>Close your account</strong></p>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Detailspage;
-
-
-
-
-// import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
-// import { useNavigate } from 'react-router-dom';
-
-// const Detailspage = () => {
-//   const navigate = useNavigate();
-//   const [profile, setProfile] = useState(null);
-
-//   useEffect(() => {
-//     const fetchProfile = async () => {
-//       try {
-//         const token = localStorage.getItem('adminToken'); // ✅ Fixed token key
-//         console.log("🔐 Token from localStorage:", token);
-
-//         if (!token) {
-//           alert('No token found. Please login.');
-//           navigate('/login');
-//           return;
-//         }
-
-//         const res = await axios.get('http://192.168.1.6:5000/api/admin/profile', {
-//           headers: {
-//             Authorization: `Bearer ${token}`,
-//           },
-//         });
-
-//         console.log("✅ Profile fetched:", res.data);
-//         setProfile(res.data);
-//       } catch (error) {
-//         console.error('❌ Error fetching profile:', error);
-//         if (error.response?.status === 401) {
-//           alert('Session expired or unauthorized. Please login again.');
-//           localStorage.removeItem('adminToken');
-//           navigate('/login');
-//         }
-//       }
-//     };
-
-//     fetchProfile();
-//   }, [navigate]);
-
-//   if (!profile) {
-//     return <div className="p-4">Loading...</div>;
-//   }
-
-//   return (
-//     <div className="d-flex vh-100 bg-light">
-//       <div className="flex-grow-1 p-4 overflow-auto">
-//         <div className="d-flex justify-content-between align-items-center mb-4">
-//           <div className="p-2 gap-2 d-flex align-items-center">
-//             <img src={profile.profile_pic || "https://i.pravatar.cc/40"} alt="Avatar" className="rounded-circle" />
-//             <span className="fw-semibold">{profile.full_name}</span>
-//           </div>
-//           <button className="btn btn-sm btn-outline-danger" onClick={() => navigate('/profile')}>
-//             Edit
-//           </button>
-//         </div>
-
-//         {/* Profile + Address */}
-//         <div className="row g-3 mb-3">
-//           <div className="col-md-6">
-//             <div className="card p-3">
-//               <div className="d-flex justify-content-between align-items-start">
-//                 <div>
-//                   <img src={profile.profile_pic || "https://i.pravatar.cc/60"} className="rounded-circle mb-2" alt="profile" />
-//                   <h6 className="fw-bold mb-0">{profile.full_name}</h6>
-//                   <small className="text-muted">{profile.phone}</small>
-//                 </div>
-//                 <small>ID: {profile.adminId || 'N/A'}</small>
-//               </div>
-//               <button className="btn btn-sm btn-outline-secondary mt-3 ms-auto">Edit</button>
-//             </div>
-//           </div>
-
-//           <div className="col-md-6">
-//             <div className="card p-3">
-//               <h6 className="fw-bold mb-2">Address <span className="badge bg-primary ms-2">Primary</span></h6>
-//               <p className="mb-1">{profile.address || 'N/A'}</p>
-//               <p className="mb-0">{profile.secondary_address || ''}</p>
-//               <button className="btn btn-sm btn-outline-secondary mt-3 ms-auto">Edit</button>
-//             </div>
-//           </div>
-//         </div>
-
-//         {/* Emails + Phone */}
-//         <div className="row g-3 mb-3">
-//           <div className="col-md-6">
-//             <div className="card p-3">
-//               <h6 className="fw-bold mb-2">Emails</h6>
-//               <span className="badge bg-secondary me-2">Primary</span> {profile.email}
-//               <div className="d-flex gap-2 mt-3">
-//                 <button className="btn btn-sm btn-outline-secondary mt-3 ms-auto">Edit</button>
-//               </div>
-//             </div>
-//           </div>
-
-//           <div className="col-md-6">
-//             <div className="card p-3">
-//               <h6 className="fw-bold mb-2">Phone Number</h6>
-//               <span className="badge bg-secondary me-2">Primary</span> {profile.phone}
-//               <button className="btn btn-sm btn-outline-secondary mt-3 ms-auto">Edit</button>
-//             </div>
-//           </div>
-//         </div>
-
-//         {/* Account Options */}
-//         <div className="card p-3">
-//           <h6 className="fw-bold mb-3">Account Options</h6>
-//           <div className="row">
-//             <div className="col-md-4">
-//               <p className="mb-1"><strong>Language</strong></p>
-//               <p className="text-muted">{profile.language || 'N/A'}</p>
-//             </div>
-//             <div className="col-md-4">
-//               <p className="mb-1"><strong>Time Zone</strong></p>
-//               <p className="text-muted">{profile.time_zone || 'N/A'}</p>
-//             </div>
-//             <div className="col-md-4">
-//               <p className="mb-1"><strong>Nationality</strong></p>
-//               <p className="text-muted">{profile.nationality || 'N/A'}</p>
-//             </div>
-//             <div className="col-md-4">
-//               <p className="mb-1"><strong>Merchant ID</strong></p>
-//               <p className="text-muted">{profile.merchant_id || 'N/A'}</p>
-//             </div>
-//             <div className="col-md-4">
-//               <p className="mb-1 text-danger"><strong>Close your account</strong></p>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Detailspage;
-
-
-// import React, { useEffect, useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
-// import axios from 'axios';
-
-// const Detailspage = () => {
-//   const navigate = useNavigate();
-//   const [profile, setProfile] = useState(null);
-
-//   useEffect(() => {
-//     const fetchProfile = async () => {
-//       const token = localStorage.getItem('token');
-//       if (!token) {
-//         alert('No token found. Redirecting to login.');
-//         navigate('/login');
-//         return;
-//       }
-
-//       try {
-//         const res = await axios.get('http://192.168.1.6:5000/api/admin/profile', {
-//           headers: {
-//             Authorization: `Bearer ${token}`,
-//           },
-//         });
-
-//         const data = res.data.profile || res.data; // fallback if response is nested
-//         setProfile(data);
-//         console.log('✅ Profile:', data);
-//       } catch (error) {
-//         console.error('❌ Error fetching profile:', error);
-//         localStorage.removeItem('token');
-//         navigate('/login');
-//       }
-//     };
-
-//     fetchProfile();
-//   }, [navigate]);
-
-//   if (!profile) return <div className="p-4">Loading...</div>;
-
-//   return (
-//     <div className="d-flex vh-100 bg-light">
-//       <div className="flex-grow-1 p-4 overflow-auto">
-//         {/* Top Bar */}
-//         <div className="d-flex justify-content-between align-items-center mb-4">
-//           <div className="p-2 d-flex align-items-center gap-2">
-//             <img
-//               src={profile.profile_pic || "https://i.pravatar.cc/40"}
-//               alt="Avatar"
-//               className="rounded-circle"
-//               width="40"
-//               height="40"
-//             />
-//             <span className="fw-semibold">{profile.full_name || 'N/A'}</span>
-//           </div>
-//           <button className="btn btn-sm btn-outline-danger" onClick={() => navigate('/profile')}>
-//             Edit
-//           </button>
-//         </div>
-
-//         {/* Profile Details */}
-//         <div className="row g-3 mb-3">
-//           <div className="col-md-6">
-//             <div className="card p-3">
-//               <div className="d-flex justify-content-between align-items-start">
-//                 <div>
-//                   <img
-//                     src={profile.profile_pic || "https://i.pravatar.cc/60"}
-//                     alt="Profile"
-//                     className="rounded-circle mb-2"
-//                     width="60"
-//                     height="60"
-//                   />
-//                   <h6 className="fw-bold mb-0">{profile.full_name || 'N/A'}</h6>
-//                   <small className="text-muted">{profile.phone || 'N/A'}</small>
-//                 </div>
-//                 <small>ID: {profile.adminId || 'N/A'}</small>
-//               </div>
-//               <button className="btn btn-sm btn-outline-secondary mt-3 ms-auto">Edit</button>
-//             </div>
-//           </div>
-
-//           <div className="col-md-6">
-//             <div className="card p-3">
-//               <h6 className="fw-bold mb-2">
-//                 Address <span className="badge bg-primary ms-2">Primary</span>
-//               </h6>
-//               <p className="mb-1">{profile.address || 'N/A'}</p>
-//               <p className="mb-0">{profile.secondary_address || ''}</p>
-//               <button className="btn btn-sm btn-outline-secondary mt-3 ms-auto">Edit</button>
-//             </div>
-//           </div>
-//         </div>
-
-//         {/* Email & Phone */}
-//         <div className="row g-3 mb-3">
-//           <div className="col-md-6">
-//             <div className="card p-3">
-//               <h6 className="fw-bold mb-2">Email</h6>
-//               <span className="badge bg-secondary me-2">Primary</span> {profile.email || 'N/A'}
-//               <button className="btn btn-sm btn-outline-secondary mt-3 ms-auto">Edit</button>
-//             </div>
-//           </div>
-
-//           <div className="col-md-6">
-//             <div className="card p-3">
-//               <h6 className="fw-bold mb-2">Phone Number</h6>
-//               <span className="badge bg-secondary me-2">Primary</span> {profile.phone || 'N/A'}
-//               <button className="btn btn-sm btn-outline-secondary mt-3 ms-auto">Edit</button>
-//             </div>
-//           </div>
-//         </div>
-
-//         {/* Account Options */}
-//         <div className="card p-3">
-//           <h6 className="fw-bold mb-3">Account Options</h6>
-//           <div className="row">
-//             <div className="col-md-4">
-//               <p className="mb-1"><strong>Language</strong></p>
-//               <p className="text-muted">{profile.language || 'N/A'}</p>
-//             </div>
-//             <div className="col-md-4">
-//               <p className="mb-1"><strong>Time Zone</strong></p>
-//               <p className="text-muted">{profile.time_zone || 'N/A'}</p>
-//             </div>
-//             <div className="col-md-4">
-//               <p className="mb-1"><strong>Nationality</strong></p>
-//               <p className="text-muted">{profile.nationality || 'N/A'}</p>
-//             </div>
-//             <div className="col-md-4">
-//               <p className="mb-1"><strong>Merchant ID</strong></p>
-//               <p className="text-muted">{profile.merchant_id || 'N/A'}</p>
-//             </div>
-//             <div className="col-md-4">
-//               <p className="mb-1 text-danger"><strong>Close your account</strong></p>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Detailspage;
-
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 const Detailspage = () => {
   const navigate = useNavigate();
-  const location = useLocation(); // ⬅️ added to track route changes
+  const location = useLocation();
   const [profile, setProfile] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchProfile = async () => {
+      setLoading(true);
+      setError(null);
+      
       const token = localStorage.getItem('token');
       if (!token) {
         alert('No token found. Redirecting to login.');
@@ -937,124 +22,285 @@ const Detailspage = () => {
       }
 
       try {
-        const res = await axios.get('http://192.168.1.6:5000/api/admin/profile', {
+        const res = await axios.get('http://localhost:8000/api/admin/profile', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
 
-        const data = res.data.profile || res.data;
+        // Better handling of different response structures
+        const data = res.data.profile || res.data || res.data.data;
         setProfile(data);
         console.log('✅ Profile:', data);
       } catch (error) {
         console.error('❌ Error fetching profile:', error);
-        localStorage.removeItem('token');
-        navigate('/login');
+        setError('Failed to fetch profile data');
+        if (error.response?.status === 401) {
+          localStorage.removeItem('token');
+          navigate('/login');
+        }
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchProfile();
-  }, [navigate, location]); // ⬅️ triggers useEffect on route change
+  }, [navigate, location]);
 
-  if (!profile) return <div className="p-4">Loading...</div>;
+  const handleEditProfile = () => {
+    navigate('/profile', { state: { profile } });
+  };
 
-  return (
-    <div className="d-flex vh-100 bg-light">
-      <div className="flex-grow-1 p-4 overflow-auto">
-        <div className="d-flex justify-content-between align-items-center mb-4">
-          <div className="p-2 d-flex align-items-center gap-2">
-            <img
-              src={profile.profile_pic || "https://i.pravatar.cc/40"}
-              alt="Avatar"
-              className="rounded-circle"
-              width="40"
-              height="40"
-            />
-            <span className="fw-semibold">{profile.full_name || 'N/A'}</span>
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate('/login');
+  };
+
+  if (loading) {
+    return (
+      <div className="d-flex vh-100 bg-light align-items-center justify-content-center">
+        <div className="text-center">
+          <div className="spinner-border text-primary mb-3" role="status">
+            <span className="visually-hidden">Loading...</span>
           </div>
-          <button
-            className="btn btn-sm btn-outline-danger"
-            onClick={() => navigate('/profile', { state: { profile } })}
-          >
-            Edit
+          <p className="text-muted">Loading profile...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="d-flex vh-100 bg-light align-items-center justify-content-center">
+        <div className="card p-4 text-center">
+          <div className="text-danger mb-3">
+            <i className="bi bi-exclamation-circle" style={{ fontSize: '3rem' }}></i>
+          </div>
+          <h5 className="text-danger">Error Loading Profile</h5>
+          <p className="text-muted">{error}</p>
+          <button className="btn btn-primary" onClick={() => window.location.reload()}>
+            Retry
           </button>
         </div>
+      </div>
+    );
+  }
 
-        {/* Profile Details Layout (unchanged) */}
-        <div className="row g-3 mb-3">
-          <div className="col-md-6">
-            <div className="card p-3">
-              <div className="d-flex justify-content-between align-items-start">
-                <div>
+  if (!profile) {
+    return (
+      <div className="d-flex vh-100 bg-light align-items-center justify-content-center">
+        <div className="card p-4 text-center">
+          <h5 className="text-warning">No Profile Data</h5>
+          <p className="text-muted">Profile information not available</p>
+          <button className="btn btn-secondary" onClick={() => navigate('/dashboard')}>
+            Go to Dashboard
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-vh-100 bg-light">
+      <div className="container-fluid p-0">
+        {/* Header */}
+        <div className="bg-white shadow-sm border-bottom">
+          <div className="container-xl px-4 py-3">
+            <div className="d-flex justify-content-between align-items-center">
+              <div className="d-flex align-items-center gap-3">
+                <button 
+                  className="btn btn-outline-secondary btn-sm"
+                  onClick={() => navigate(-1)}
+                >
+                  <i className="bi bi-arrow-left"></i> Back
+                </button>
+                <div className="d-flex align-items-center gap-3">
                   <img
-                    src={profile.profile_pic || "https://i.pravatar.cc/60"}
+                    src={profile.profile_pic || `https://ui-avatars.com/api/?name=${encodeURIComponent(profile.name || profile.full_name || 'User')}&background=007bff&color=fff&size=40`}
                     alt="Profile"
-                    className="rounded-circle mb-2"
-                    width="60"
-                    height="60"
+                    className="rounded-circle border"
+                    width="40"
+                    height="40"
+                    style={{ objectFit: 'cover' }}
                   />
-                  <h6 className="fw-bold mb-0">{profile.full_name || 'N/A'}</h6>
-                  <small className="text-muted">{profile.phone || 'N/A'}</small>
+                  <div>
+                    <h5 className="mb-0 fw-bold">{profile.name || profile.full_name || 'N/A'}</h5>
+                    <small className="text-muted">
+                      {profile.role || 'ADMIN'} 
+                      {profile.verified !== undefined && (
+                        <span className={`badge ms-2 ${profile.verified ? 'bg-success' : 'bg-warning'}`}>
+                          {profile.verified ? 'Verified' : 'Unverified'}
+                        </span>
+                      )}
+                    </small>
+                  </div>
                 </div>
-                <small>ID: {profile.adminId || 'N/A'}</small>
               </div>
-              <button className="btn btn-sm btn-outline-secondary mt-3 ms-auto">Edit</button>
-            </div>
-          </div>
-
-          <div className="col-md-6">
-            <div className="card p-3">
-              <h6 className="fw-bold mb-2">
-                Address <span className="badge bg-primary ms-2">Primary</span>
-              </h6>
-              <p className="mb-1">{profile.address || 'N/A'}</p>
-              <p className="mb-0">{profile.secondary_address || ''}</p>
-              <button className="btn btn-sm btn-outline-secondary mt-3 ms-auto">Edit</button>
-            </div>
-          </div>
-        </div>
-
-        {/* Email & Phone */}
-        <div className="row g-3 mb-3">
-          <div className="col-md-6">
-            <div className="card p-3">
-              <h6 className="fw-bold mb-2">Email</h6>
-              <span className="badge bg-secondary me-2">Primary</span> {profile.email || 'N/A'}
-              <button className="btn btn-sm btn-outline-secondary mt-3 ms-auto">Edit</button>
-            </div>
-          </div>
-
-          <div className="col-md-6">
-            <div className="card p-3">
-              <h6 className="fw-bold mb-2">Phone Number</h6>
-              <span className="badge bg-secondary me-2">Primary</span> {profile.phone || 'N/A'}
-              <button className="btn btn-sm btn-outline-secondary mt-3 ms-auto">Edit</button>
+              <div className="d-flex gap-2">
+                <button
+                  className="btn btn-outline-primary btn-sm"
+                  onClick={handleEditProfile}
+                >
+                  <i className="bi bi-pencil"></i> Edit Profile
+                </button>
+                <button
+                  className="btn btn-outline-danger btn-sm"
+                  onClick={handleLogout}
+                >
+                  <i className="bi bi-box-arrow-right"></i> Logout
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Account Options */}
-        <div className="card p-3">
-          <h6 className="fw-bold mb-3">Account Options</h6>
-          <div className="row">
-            <div className="col-md-4">
-              <p className="mb-1"><strong>Language</strong></p>
-              <p className="text-muted">{profile.language || 'N/A'}</p>
+        {/* Main Content */}
+        <div className="container-xl px-4 py-4">
+          <div className="row g-4">
+            {/* Profile Summary Card */}
+            <div className="col-lg-4">
+              <div className="card h-100 shadow-sm">
+                <div className="card-body text-center">
+                  <img
+                    src={profile.profile_pic || `https://ui-avatars.com/api/?name=${encodeURIComponent(profile.name || profile.full_name || 'User')}&background=007bff&color=fff&size=120`}
+                    alt="Profile"
+                    className="rounded-circle border mb-3"
+                    width="120"
+                    height="120"
+                    style={{ objectFit: 'cover' }}
+                  />
+                  <h4 className="fw-bold mb-2">{profile.name || profile.full_name || 'N/A'}</h4>
+                  <div className="mb-3">
+                    <span className={`badge ${profile.verified ? 'bg-success' : 'bg-warning'}`}>
+                      {profile.verified ? 'Verified Account' : 'Unverified Account'}
+                    </span>
+                  </div>
+                  <div className="row text-center border-top pt-3">
+                    <div className="col-6">
+                      <h6 className="text-muted mb-1">Role</h6>
+                      <span className="badge bg-primary">{profile.role || 'ADMIN'}</span>
+                    </div>
+                    <div className="col-6">
+                      <h6 className="text-muted mb-1">ID</h6>
+                      <small className="text-muted">{profile._id || profile.adminId || 'N/A'}</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="col-md-4">
-              <p className="mb-1"><strong>Time Zone</strong></p>
-              <p className="text-muted">{profile.time_zone || 'N/A'}</p>
-            </div>
-            <div className="col-md-4">
-              <p className="mb-1"><strong>Nationality</strong></p>
-              <p className="text-muted">{profile.nationality || 'N/A'}</p>
-            </div>
-            <div className="col-md-4">
-              <p className="mb-1"><strong>Merchant ID</strong></p>
-              <p className="text-muted">{profile.merchant_id || 'N/A'}</p>
-            </div>
-            <div className="col-md-4">
-              <p className="mb-1 text-danger"><strong>Close your account</strong></p>
+
+            {/* Details Cards */}
+            <div className="col-lg-8">
+              <div className="row g-4">
+                {/* Contact Information */}
+                <div className="col-md-6">
+                  <div className="card h-100 shadow-sm">
+                    <div className="card-header bg-white">
+                      <h6 className="fw-bold mb-0">
+                        <i className="bi bi-telephone text-primary me-2"></i>
+                        Contact Information
+                      </h6>
+                    </div>
+                    <div className="card-body">
+                      <div className="mb-3">
+                        <label className="form-label text-muted small">Phone Number</label>
+                        <div className="d-flex align-items-center">
+                          <span className="badge bg-secondary me-2">Primary</span>
+                          <span>{profile.phone || 'N/A'}</span>
+                        </div>
+                      </div>
+                      <div>
+                        <label className="form-label text-muted small">Email Address</label>
+                        <div className="d-flex align-items-center">
+                          <span className="badge bg-secondary me-2">Primary</span>
+                          <span>{profile.email || 'N/A'}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Address Information */}
+                <div className="col-md-6">
+                  <div className="card h-100 shadow-sm">
+                    <div className="card-header bg-white">
+                      <h6 className="fw-bold mb-0">
+                        <i className="bi bi-geo-alt text-primary me-2"></i>
+                        Address Information
+                      </h6>
+                    </div>
+                    <div className="card-body">
+                      <div className="mb-3">
+                        <label className="form-label text-muted small">Primary Address</label>
+                        <p className="mb-0">{profile.address || 'No address provided'}</p>
+                      </div>
+                      {profile.secondary_address && (
+                        <div>
+                          <label className="form-label text-muted small">Secondary Address</label>
+                          <p className="mb-0">{profile.secondary_address}</p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Account Settings */}
+                <div className="col-12">
+                  <div className="card shadow-sm">
+                    <div className="card-header bg-white">
+                      <h6 className="fw-bold mb-0">
+                        <i className="bi bi-gear text-primary me-2"></i>
+                        Account Settings
+                      </h6>
+                    </div>
+                    <div className="card-body">
+                      <div className="row g-4">
+                        <div className="col-md-3">
+                          <label className="form-label text-muted small">Language</label>
+                          <p className="mb-0 fw-medium">{profile.language || 'English'}</p>
+                        </div>
+                        <div className="col-md-3">
+                          <label className="form-label text-muted small">Time Zone</label>
+                          <p className="mb-0 fw-medium">{profile.time_zone || 'UTC'}</p>
+                        </div>
+                        <div className="col-md-3">
+                          <label className="form-label text-muted small">Nationality</label>
+                          <p className="mb-0 fw-medium">{profile.nationality || 'N/A'}</p>
+                        </div>
+                        <div className="col-md-3">
+                          <label className="form-label text-muted small">Merchant ID</label>
+                          <p className="mb-0 fw-medium">{profile.merchant_id || 'N/A'}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Account Actions */}
+                <div className="col-12">
+                  <div className="card shadow-sm border-danger">
+                    <div className="card-header bg-light border-danger">
+                      <h6 className="fw-bold mb-0 text-danger">
+                        <i className="bi bi-exclamation-triangle text-danger me-2"></i>
+                        Danger Zone
+                      </h6>
+                    </div>
+                    <div className="card-body">
+                      <div className="d-flex justify-content-between align-items-center">
+                        <div>
+                          <h6 className="fw-bold text-danger mb-1">Delete Account</h6>
+                          <small className="text-muted">
+                            Permanently delete your account and all associated data. This action cannot be undone.
+                          </small>
+                        </div>
+                        <button className="btn btn-outline-danger btn-sm">
+                          <i className="bi bi-trash"></i> Delete Account
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1064,135 +310,3 @@ const Detailspage = () => {
 };
 
 export default Detailspage;
-// import React, { useEffect, useState } from 'react';
-// import { useNavigate, useLocation } from 'react-router-dom';
-// import axios from 'axios';
-
-// const Detailspage = () => {
-//   const navigate = useNavigate();
-//   const location = useLocation();
-//   const [profile, setProfile] = useState(null);
-
-//   const fetchProfile = async () => {
-//     const token = localStorage.getItem('token');
-//     if (!token) {
-//       alert('No token found. Redirecting to login.');
-//       navigate('/login');
-//       return;
-//     }
-
-//     try {
-//       const res = await axios.get('http://192.168.1.6:5000/api/admin/profile', {
-//         headers: {
-//           Authorization: `Bearer ${token}`,
-//         },
-//       });
-//       const data = res.data.profile || res.data;
-//       setProfile(data);
-//     } catch (error) {
-//       console.error('❌ Error fetching profile:', error);
-//       localStorage.removeItem('token');
-//       navigate('/login');
-//     }
-//   };
-
-//   useEffect(() => {
-//     fetchProfile();
-//   }, [location.state?.updated]); // Re-fetch on update
-
-//   if (!profile) return <div className="p-4">Loading...</div>;
-
-//   return (
-//     <div className="d-flex vh-100 bg-light">
-//       <div className="flex-grow-1 p-4 overflow-auto">
-//         <div className="d-flex justify-content-between align-items-center mb-4">
-//           <div className="p-2 d-flex align-items-center gap-2">
-//             <img
-//               src={profile.profile_pic || "https://i.pravatar.cc/40"}
-//               alt="Avatar"
-//               className="rounded-circle"
-//               width="40"
-//               height="40"
-//             />
-//             <span className="fw-semibold">{profile.full_name || 'N/A'}</span>
-//           </div>
-//           <button
-//             className="btn btn-sm btn-outline-danger"
-//             onClick={() => navigate('/profile', { state: { profile } })}
-//           >
-//             Edit
-//           </button>
-//         </div>
-
-//         <div className="row g-3 mb-3">
-//           <div className="col-md-6">
-//             <div className="card p-3">
-//               <div className="d-flex justify-content-between align-items-start">
-//                 <div>
-//                   <img
-//                     src={profile.profile_pic || "https://i.pravatar.cc/60"}
-//                     alt="Profile"
-//                     className="rounded-circle mb-2"
-//                     width="60"
-//                     height="60"
-//                   />
-//                   <h6 className="fw-bold mb-0">{profile.full_name || 'N/A'}</h6>
-//                   <small className="text-muted">{profile.phone || 'N/A'}</small>
-//                 </div>
-//                 <small>ID: {profile.adminId || 'N/A'}</small>
-//               </div>
-//             </div>
-//           </div>
-
-//           <div className="col-md-6">
-//             <div className="card p-3">
-//               <h6 className="fw-bold mb-2">Address</h6>
-//               <p className="mb-1">{profile.address || 'N/A'}</p>
-//               <p className="mb-0">{profile.secondary_address || ''}</p>
-//             </div>
-//           </div>
-//         </div>
-
-//         <div className="row g-3 mb-3">
-//           <div className="col-md-6">
-//             <div className="card p-3">
-//               <h6 className="fw-bold mb-2">Email</h6>
-//               <span className="badge bg-secondary me-2">Primary</span> {profile.email || 'N/A'}
-//             </div>
-//           </div>
-
-//           <div className="col-md-6">
-//             <div className="card p-3">
-//               <h6 className="fw-bold mb-2">Phone Number</h6>
-//               <span className="badge bg-secondary me-2">Primary</span> {profile.phone || 'N/A'}
-//             </div>
-//           </div>
-//         </div>
-
-//         <div className="card p-3">
-//           <h6 className="fw-bold mb-3">Account Options</h6>
-//           <div className="row">
-//             <div className="col-md-4">
-//               <p className="mb-1"><strong>Language</strong></p>
-//               <p className="text-muted">{profile.language || 'N/A'}</p>
-//             </div>
-//             <div className="col-md-4">
-//               <p className="mb-1"><strong>Time Zone</strong></p>
-//               <p className="text-muted">{profile.time_zone || 'N/A'}</p>
-//             </div>
-//             <div className="col-md-4">
-//               <p className="mb-1"><strong>Nationality</strong></p>
-//               <p className="text-muted">{profile.nationality || 'N/A'}</p>
-//             </div>
-//             <div className="col-md-4">
-//               <p className="mb-1"><strong>Merchant ID</strong></p>
-//               <p className="text-muted">{profile.merchant_id || 'N/A'}</p>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Detailspage;
