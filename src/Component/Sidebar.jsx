@@ -97,6 +97,13 @@ const Sidebar = ({ onLogout }) => {
           </span>
           Employee
         </Link>
+
+        <Link to="/empolyee_location" className="sidebar-link">
+          <span className="sidebar-icon">
+            <FaUserTie />
+          </span>
+          Employee location
+        </Link>
       </div>
 
       <div className="sidebar-section">
