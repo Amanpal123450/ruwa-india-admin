@@ -428,7 +428,7 @@ export default function AdminUsersList() {
                   <td className="time-cell">
                     {emp.isOnline
                       ? "Currently Online"
-                      : emp.locationUpdatedAt
+                      : emp.lastSeen
                       ? new Date(emp.locationUpdatedAt).toLocaleString()
                       : "Never Active"}
                   </td>
