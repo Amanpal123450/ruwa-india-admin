@@ -34,14 +34,14 @@
 //       lastSeen: new Date().toISOString()
 //     },
 //     {
-//       employeeId: "EMP002", 
+//       employeeId: "EMP002",
 //       name: "Jane Smith",
 //       isOnline: false,
 //       lastSeen: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString() // 2 hours ago
 //     },
 //     {
 //       employeeId: "EMP003",
-//       name: "Mike Johnson", 
+//       name: "Mike Johnson",
 //       isOnline: true,
 //       lastSeen: new Date().toISOString()
 //     },
@@ -53,14 +53,12 @@
 //     }
 //   ];
 
-
-
 //   useEffect(() => {
 //     const fetchEmployees = async () => {
 //       try {
 //         setLoading(true);
 //         setError(null);
-        
+
 //         // In a real implementation, you would use:
 //         const token = localStorage.getItem("token") || "your-jwt-token";
 //         const res = await axios.get("https://ruwa-backend.onrender.com/api/location/employees", {
@@ -79,12 +77,12 @@
 // );
 
 //         console.log("Employees data loaded:", res.data);
-        
+
 //         // For demo purposes, simulate API call
 //         // await new Promise(resolve => setTimeout(resolve, 9000));
 //         // setEmployees(employees);
 //         // console.log("Employees data loaded:", mockEmployees);
-        
+
 //       } catch (err) {
 //         console.error("Error fetching employees:", err);
 //         setError("Failed to fetch employee data");
@@ -157,128 +155,127 @@
 //         </div>
 //       </div>
 
-      // <style jsx>{`
-      //   .admin-users-container {
-      //     padding: 20px;
-      //     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      //     background-color: #f8f9fa;
-      //     min-height: 100vh;
-      //   }
-      //   .admin-users-container h2 {
-      //     text-align: center;
-      //     margin-bottom: 30px;
-      //     color: #343a40;
-      //     font-size: 2rem;
-      //     font-weight: 600;
-      //   }
-      //   .table-container {
-      //     overflow-x: auto;
-      //     border-radius: 8px;
-      //     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      //   }
-      //   .employees-table {
-      //     width: 100%;
-      //     border-collapse: collapse;
-      //     background-color: #fff;
-      //     border-radius: 8px;
-      //     overflow: hidden;
-      //   }
-      //   .employees-table th,
-      //   .employees-table td {
-      //     padding: 15px;
-      //     text-align: left;
-      //     border-bottom: 1px solid #e9ecef;
-      //   }
-      //   .employees-table th {
-      //     background-color: #007bff;
-      //     color: #fff;
-      //     font-weight: 600;
-      //     text-transform: uppercase;
-      //     font-size: 0.85rem;
-      //     letter-spacing: 0.5px;
-      //   }
-      //   .employees-table tbody tr {
-      //     transition: all 0.2s ease;
-      //   }
-      //   .employees-table tbody tr:nth-child(even) {
-      //     background-color: #f8f9fa;
-      //   }
-      //   .employees-table tbody tr.online {
-      //     border-left: 4px solid #28a745;
-      //   }
-      //   .employees-table tbody tr.offline {
-      //     border-left: 4px solid #dc3545;
-      //   }
-      //   .employees-table tbody tr:hover {
-      //     background-color: #e3f2fd;
-      //     transform: translateY(-1px);
-      //     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      //   }
-      //   .name-cell {
-      //     font-weight: 600;
-      //     color: #343a40;
-      //   }
-      //   .id-cell {
-      //     font-family: monospace;
-      //     color: #6c757d;
-      //     font-size: 0.9rem;
-      //   }
-      //   .status-badge {
-      //     padding: 4px 12px;
-      //     border-radius: 20px;
-      //     font-size: 0.8rem;
-      //     font-weight: 600;
-      //     text-transform: uppercase;
-      //     letter-spacing: 0.5px;
-      //   }
-      //   .online-badge {
-      //     background-color: #d4edda;
-      //     color: #155724;
-      //     border: 1px solid #c3e6cb;
-      //   }
-      //   .offline-badge {
-      //     background-color: #f8d7da;
-      //     color: #721c24;
-      //     border: 1px solid #f1c2c7;
-      //   }
-      //   .time-cell {
-      //     color: #6c757d;
-      //     font-size: 0.9rem;
-      //   }
-      //   .loading,
-      //   .error {
-      //     text-align: center;
-      //     padding: 40px;
-      //     font-size: 1.2rem;
-      //     color: #6c757d;
-      //   }
-      //   .error {
-      //     color: #dc3545;
-      //     background-color: #f8d7da;
-      //     border: 1px solid #f1c2c7;
-      //     border-radius: 4px;
-      //     margin: 20px auto;
-      //     max-width: 500px;
-      //   }
-      //   @media (max-width: 768px) {
-      //     .admin-users-container {
-      //       padding: 10px;
-      //     }
-      //     .employees-table th,
-      //     .employees-table td {
-      //       padding: 10px 8px;
-      //       font-size: 0.9rem;
-      //     }
-      //     .admin-users-container h2 {
-      //       font-size: 1.5rem;
-      //       margin-bottom: 20px;
-      //     }
-      //   }
-      // `}</style>
+// <style jsx>{`
+//   .admin-users-container {
+//     padding: 20px;
+//     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+//     background-color: #f8f9fa;
+//     min-height: 100vh;
+//   }
+//   .admin-users-container h2 {
+//     text-align: center;
+//     margin-bottom: 30px;
+//     color: #343a40;
+//     font-size: 2rem;
+//     font-weight: 600;
+//   }
+//   .table-container {
+//     overflow-x: auto;
+//     border-radius: 8px;
+//     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+//   }
+//   .employees-table {
+//     width: 100%;
+//     border-collapse: collapse;
+//     background-color: #fff;
+//     border-radius: 8px;
+//     overflow: hidden;
+//   }
+//   .employees-table th,
+//   .employees-table td {
+//     padding: 15px;
+//     text-align: left;
+//     border-bottom: 1px solid #e9ecef;
+//   }
+//   .employees-table th {
+//     background-color: #007bff;
+//     color: #fff;
+//     font-weight: 600;
+//     text-transform: uppercase;
+//     font-size: 0.85rem;
+//     letter-spacing: 0.5px;
+//   }
+//   .employees-table tbody tr {
+//     transition: all 0.2s ease;
+//   }
+//   .employees-table tbody tr:nth-child(even) {
+//     background-color: #f8f9fa;
+//   }
+//   .employees-table tbody tr.online {
+//     border-left: 4px solid #28a745;
+//   }
+//   .employees-table tbody tr.offline {
+//     border-left: 4px solid #dc3545;
+//   }
+//   .employees-table tbody tr:hover {
+//     background-color: #e3f2fd;
+//     transform: translateY(-1px);
+//     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+//   }
+//   .name-cell {
+//     font-weight: 600;
+//     color: #343a40;
+//   }
+//   .id-cell {
+//     font-family: monospace;
+//     color: #6c757d;
+//     font-size: 0.9rem;
+//   }
+//   .status-badge {
+//     padding: 4px 12px;
+//     border-radius: 20px;
+//     font-size: 0.8rem;
+//     font-weight: 600;
+//     text-transform: uppercase;
+//     letter-spacing: 0.5px;
+//   }
+//   .online-badge {
+//     background-color: #d4edda;
+//     color: #155724;
+//     border: 1px solid #c3e6cb;
+//   }
+//   .offline-badge {
+//     background-color: #f8d7da;
+//     color: #721c24;
+//     border: 1px solid #f1c2c7;
+//   }
+//   .time-cell {
+//     color: #6c757d;
+//     font-size: 0.9rem;
+//   }
+//   .loading,
+//   .error {
+//     text-align: center;
+//     padding: 40px;
+//     font-size: 1.2rem;
+//     color: #6c757d;
+//   }
+//   .error {
+//     color: #dc3545;
+//     background-color: #f8d7da;
+//     border: 1px solid #f1c2c7;
+//     border-radius: 4px;
+//     margin: 20px auto;
+//     max-width: 500px;
+//   }
+//   @media (max-width: 768px) {
+//     .admin-users-container {
+//       padding: 10px;
+//     }
+//     .employees-table th,
+//     .employees-table td {
+//       padding: 10px 8px;
+//       font-size: 0.9rem;
+//     }
+//     .admin-users-container h2 {
+//       font-size: 1.5rem;
+//       margin-bottom: 20px;
+//     }
+//   }
+// `}</style>
 //     </>
 //   );
 // }
-
 
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -429,7 +426,13 @@ export default function AdminUsersList() {
                     {emp.isOnline
                       ? "Currently Online"
                       : emp.lastSeen
-                      ? new Date(emp.locationUpdatedAt).toLocaleString()
+                      ? new Date(emp.lastSeen).toLocaleString("en-IN", {
+                          day: "2-digit",
+                          month: "short",
+                          year: "numeric",
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })
                       : "Never Active"}
                   </td>
                   <td className="location-cell">
@@ -468,10 +471,10 @@ export default function AdminUsersList() {
           </button>
         </div>
       </div>
-            <style jsx>{`
+      <style jsx>{`
         .admin-users-container {
           padding: 20px;
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
           background-color: #f8f9fa;
           min-height: 100vh;
         }
@@ -585,7 +588,7 @@ export default function AdminUsersList() {
             margin-bottom: 20px;
           }
         }
-          .pagination {
+        .pagination {
           margin-top: 20px;
           display: flex;
           justify-content: center;
