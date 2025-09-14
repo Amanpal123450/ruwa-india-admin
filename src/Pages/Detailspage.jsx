@@ -22,7 +22,7 @@ const Detailspage = () => {
       }
 
       try {
-        const res = await axios.get('http://localhost:8000/api/admin/profile', {
+        const res = await axios.get('https://ruwa-backend.onrender.com/api/admin/profile', {
           headers: {
             Authorization: `Bearer ${token}`,
           },

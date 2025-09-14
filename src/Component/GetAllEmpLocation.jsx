@@ -63,7 +63,7 @@
         
 //         // In a real implementation, you would use:
 //         const token = localStorage.getItem("token") || "your-jwt-token";
-//         const res = await axios.get("http://localhost:8000/api/location/employees", {
+//         const res = await axios.get("https://ruwa-backend.onrender.com/api/location/employees", {
 //           headers: { Authorization: `Bearer ${token}` },
 //         });
 //        setEmployees(
@@ -333,7 +333,7 @@ export default function AdminUsersList() {
 
         const token = localStorage.getItem("token") || "your-jwt-token";
         const res = await axios.get(
-          "http://localhost:8000/api/location/employees",
+          "https://ruwa-backend.onrender.com/api/location/employees",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
