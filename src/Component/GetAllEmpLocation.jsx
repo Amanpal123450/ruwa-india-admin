@@ -279,7 +279,7 @@
 
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup ,useMapEvents} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 import L from "leaflet";
@@ -295,6 +295,16 @@ L.Icon.Default.mergeOptions({
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
 });
 
+function MapClickHandler({ location }) {
+  useMapEvents({
+    click() {
+      const googleMapsUrl = `https://www.google.com/maps?q=${location.lat},${location.lng}`;
+      window.open(googleMapsUrl, "_blank"); // 🔥 Google Maps new tab me open hoga
+    },
+  });
+  return null;
+}
+
 function EmployeeMap({ location }) {
   if (!location) return <span>No Location</span>;
 
@@ -302,13 +312,16 @@ function EmployeeMap({ location }) {
     <MapContainer
       center={[location.lat, location.lng]}
       zoom={15}
-      style={{ width: "200px", height: "100px" }}
+      style={{ width: "200px", height: "100px", cursor: "pointer" }}
       scrollWheelZoom={false}
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       <Marker position={[location.lat, location.lng]}>
         <Popup>Employee Location</Popup>
       </Marker>
+
+      {/* 👇 Click handler yaha lagao */}
+      <MapClickHandler location={location} />
     </MapContainer>
   );
 }
