@@ -63,6 +63,13 @@ const Sidebar = ({ onLogout }) => {
           Pop Leads
         </Link>
 
+        <Link to="/getAllUser" className="sidebar-link">
+          <span className="sidebar-icon">
+            <FaUsers />
+          </span>
+          ALL USER
+        </Link>
+
         <Link to="/sewa-leads" className="sidebar-link">
           <span className="sidebar-icon">
             <FaCapsules />

@@ -28,6 +28,7 @@ import InsuranceLeads from './Component/InsuranceLeads';
 import AllCardApply from './Component/AllCardApply';
 import AdminMap from './Component/GetAllEmpLocation';
 import AdminUsersList from './Component/GetAllEmpLocation';
+import UsersTable from './Component/AllUser';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -90,6 +91,7 @@ function App() {
             <Route path="/Home" element={<Dashboard />} />
             <Route path="/Popup-Leads" element={<PopupLeads/>} />
             <Route path="/kendra-leads" element={<KendraLeads/>} />
+            <Route path="/getAllUser" element={<UsersTable />} />
 
 
             <Route path="/sewa-leads" element={<SewaLeads/>} />
