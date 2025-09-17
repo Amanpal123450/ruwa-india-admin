@@ -8,7 +8,7 @@ const UsersTable = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:8000/api/admin/admin/users", {
+    fetch("https://ruwa-backend.onrender.com/api/admin/admin/users", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
