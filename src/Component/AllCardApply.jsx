@@ -66,6 +66,7 @@ const AllCardApply = () => {
   };
 
   const handleApproveReject = async (id, status) => {
+      const token = localStorage.getItem('token');
     try {
       setLoading(true);
       const response = await fetch(
