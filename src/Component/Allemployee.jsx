@@ -13,6 +13,7 @@ import {
   AlertCircle,
   CheckCircle,
 } from "lucide-react";
+import * as XLSX from "xlsx";
 import {
   FaTimes,
   FaSave,
@@ -41,7 +42,7 @@ export default function AllEmployee() {
     employeeId: "", // ✅ ab defined hai
     password: "", // ✅ password bhi rakho agar edit karna hai
   });
-
+const [searchQuery, setSearchQuery] = useState("");
   // pagination states
   const [currentPage, setCurrentPage] = useState(1);
   const employeesPerPage = 5;
@@ -71,6 +72,15 @@ export default function AllEmployee() {
       setLoading(false);
     }
   };
+    const filteredEmployees = employees.filter((emp) => {
+    const query = searchQuery.toLowerCase();
+    return (
+      emp.name?.toLowerCase().includes(query) ||
+      emp.phone?.toLowerCase().includes(query) ||
+      emp.email?.toLowerCase().includes(query) ||
+      emp.employeeId?.toLowerCase().includes(query)
+    );
+  });
 
   // Delete employee
   const deleteEmployee = async (id) => {
@@ -147,8 +157,35 @@ export default function AllEmployee() {
   // pagination logic
   const indexOfLast = currentPage * employeesPerPage;
   const indexOfFirst = indexOfLast - employeesPerPage;
-  const currentEmployees = employees.slice(indexOfFirst, indexOfLast);
-  const totalPages = Math.ceil(employees.length / employeesPerPage);
+  const currentEmployees = filteredEmployees.slice(indexOfFirst, indexOfLast);
+  const totalPages = Math.ceil(filteredEmployees.length / employeesPerPage);
+
+
+  const downloadExcel = () => {
+    if (employees.length === 0) {
+      alert("No employees to download");
+      return;
+    }
+
+    // Format data for Excel
+    const worksheetData = employees.map((emp, index) => ({
+      S_No: index + 1,
+      Name: emp.name,
+      EmployeeID: emp.employeeId,
+      Email: emp.email,
+      Phone: emp.phone,
+      Department: emp.department,
+      Position: emp.position,
+      Address: emp.address,
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(worksheetData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Employees");
+
+    // Trigger download
+    XLSX.writeFile(workbook, "employees.xlsx");
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
@@ -167,6 +204,24 @@ export default function AllEmployee() {
                 Manage your team members efficiently
               </p>
             </div>
+            <button
+            onClick={downloadExcel}
+            className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+          >
+            Download Excel
+          </button>
+             <div className="mb-4">
+            <input
+              type="text"
+              placeholder="Search by Name, Phone, Email, or Employee ID"
+              value={searchQuery}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setCurrentPage(1); // reset to first page
+              }}
+              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+            />
+          </div>
           </div>
           {message && (
             <div
@@ -309,7 +364,7 @@ export default function AllEmployee() {
         </div>
 
         {/* Pagination controls */}
-        {employees.length > employeesPerPage && (
+       {filteredEmployees.length > employeesPerPage && (
           <div className="flex justify-center items-center gap-3 mt-6">
             <button
               disabled={currentPage === 1}
