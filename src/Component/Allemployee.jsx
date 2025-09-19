@@ -161,31 +161,91 @@ const [searchQuery, setSearchQuery] = useState("");
   const totalPages = Math.ceil(filteredEmployees.length / employeesPerPage);
 
 
-  const downloadExcel = () => {
-    if (employees.length === 0) {
-      alert("No employees to download");
-      return;
-    }
+//   const downloadExcel = () => {
+//     if (employees.length === 0) {
+//       alert("No employees to download");
+//       return;
+//     }
 
-    // Format data for Excel
-    const worksheetData = employees.map((emp, index) => ({
-      S_No: index + 1,
-      Name: emp.name,
-      EmployeeID: emp.employeeId,
-      Email: emp.email,
-      Phone: emp.phone,
-      Department: emp.department,
-      Position: emp.position,
-      Address: emp.address,
-    }));
+//     // Format data for Excel
+//     const worksheetData = employees.map((emp, index) => ({
+//       S_No: index + 1,
+//       Name: emp.name,
+//       EmployeeID: emp.employeeId,
+//       Email: emp.email,
+//       Phone: emp.phone,
+//       Department: emp.department,
+//       Position: emp.position,
+//       Address: emp.address,
+//     }));
 
-    const worksheet = XLSX.utils.json_to_sheet(worksheetData);
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Employees");
+//     const worksheet = XLSX.utils.json_to_sheet(worksheetData);
+//     const workbook = XLSX.utils.book_new();
+//     XLSX.utils.book_append_sheet(workbook, worksheet, "Employees");
 
-    // Trigger download
+//     // Trigger download
+//     XLSX.writeFile(workbook, "employees.xlsx");
+//   };
+
+//   const downloadCSV = () => {
+//   if (employees.length === 0) {
+//     alert("No employees to download");
+//     return;
+//   }
+
+//   // Format data
+//   const worksheetData = employees.map((emp, index) => ({
+//     S_No: index + 1,
+//     Name: emp.name,
+//     EmployeeID: emp.employeeId,
+//     Email: emp.email,
+//     Phone: emp.phone,
+//     Department: emp.department,
+//     Position: emp.position,
+//     Address: emp.address,
+//   }));
+
+//   // Worksheet banao
+//   const worksheet = XLSX.utils.json_to_sheet(worksheetData);
+
+//   // Workbook banao
+//   const workbook = XLSX.utils.book_new();
+//   XLSX.utils.book_append_sheet(workbook, worksheet, "Employees");
+
+//   // CSV export
+//   XLSX.writeFile(workbook, "employees.csv", { bookType: "csv" });
+// };
+
+const exportData = (type) => {
+  if (employees.length === 0) {
+    alert("No employees to download");
+    return;
+  }
+
+  // Common data (Excel + CSV dono ke liye same)
+  const worksheetData = employees.map((emp, index) => ({
+    S_No: index + 1,
+    Name: emp.name,
+    EmployeeID: emp.employeeId,
+    Email: emp.email,
+    Phone: emp.phone,
+    Department: emp.department,
+    Position: emp.position,
+    Address: emp.address,
+  }));
+
+  const worksheet = XLSX.utils.json_to_sheet(worksheetData);
+  const workbook = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(workbook, worksheet, "Employees");
+
+  // Type check (Excel ya CSV)
+  if (type === "excel") {
     XLSX.writeFile(workbook, "employees.xlsx");
-  };
+  } else if (type === "csv") {
+    XLSX.writeFile(workbook, "employees.csv", { bookType: "csv" });
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
@@ -204,12 +264,22 @@ const [searchQuery, setSearchQuery] = useState("");
                 Manage your team members efficiently
               </p>
             </div>
-            <button
-            onClick={downloadExcel}
-            className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
-          >
-            Download Excel
-          </button>
+          <div className="flex gap-2">
+  <button
+    onClick={() => exportData("excel")}
+    className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+  >
+    Download Excel
+  </button>
+  <button
+    onClick={() => exportData("csv")}
+    className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+  >
+    Download CSV
+  </button>
+</div>
+
+
              <div className="mb-4">
             <input
               type="text"
