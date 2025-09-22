@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   FaChartBar,
@@ -13,9 +13,12 @@ import {
   FaUser,
   FaPlus,
   FaSignOutAlt,
+  FaChevronDown,
 } from "react-icons/fa";
 
 const Sidebar = ({ onLogout }) => {
+  const [openDropdown, setOpenDropdown] = useState(false);
+
   const handleLogout = () => {
     const confirmLogout = window.confirm("Are you sure you want to logout?");
     if (confirmLogout) {
@@ -42,11 +45,33 @@ const Sidebar = ({ onLogout }) => {
       <div className="sidebar-section">
         <p className="section-title">Page Components</p>
 
+        {/* Dropdown for Contact Leads */}
+        <div
+          className="sidebar-link d-flex align-items-center justify-content-between"
+          onClick={() => setOpenDropdown(!openDropdown)}
+          style={{ cursor: "pointer" }}
+        >
+          <div className="d-flex align-items-center">
+            <span className="sidebar-icon">
+              <FaPhone />
+            </span>
+            Contact Leads
+          </div>
+          <FaChevronDown
+            style={{
+              transform: openDropdown ? "rotate(180deg)" : "rotate(0deg)",
+              transition: "0.3s",
+            }}
+          />
+        </div>
+
+       
+       
         <Link to="/Contact_leads" className="sidebar-link">
           <span className="sidebar-icon">
-            <FaPhone />
+             <FaPhone />
           </span>
-          Contact Leads
+           Contact Leads
         </Link>
 
         <Link to="/kendra-leads" className="sidebar-link">
@@ -77,15 +102,12 @@ const Sidebar = ({ onLogout }) => {
           Sewa Leads
         </Link>
 
-  
-   <Link to="/Feedbacks" className="sidebar-link">
+        <Link to="/Feedbacks" className="sidebar-link">
           <span className="sidebar-icon">
             <FaCapsules />
           </span>
           Feedbacks
         </Link>
-
-
 
         <Link to="/ambulance-leads" className="sidebar-link">
           <span className="sidebar-icon">
@@ -107,7 +129,12 @@ const Sidebar = ({ onLogout }) => {
           </span>
           Card Applys
         </Link>
-
+<Link to="/servicepage-content" className="sidebar-link">
+          <span className="sidebar-icon">
+            <FaCreditCard />
+          </span>
+          Servicepage content
+        </Link>
         <Link to="/empolyee_list" className="sidebar-link">
           <span className="sidebar-icon">
             <FaUserTie />
@@ -121,15 +148,14 @@ const Sidebar = ({ onLogout }) => {
           </span>
           Employee location
         </Link>
-         <Link to="/allempdata" className="sidebar-link">
+        <Link to="/allempdata" className="sidebar-link">
           <span className="sidebar-icon">
             <FaUserTie />
           </span>
           Employee Data
         </Link>
       </div>
-  
-  
+
       <div className="sidebar-section">
         <p className="section-title">Other</p>
         <Link to="/details" className="sidebar-link d-flex align-items-center">
@@ -139,7 +165,10 @@ const Sidebar = ({ onLogout }) => {
           Profile
         </Link>
 
-        <Link to="/createemply" className="sidebar-link d-flex align-items-center">
+        <Link
+          to="/createemply"
+          className="sidebar-link d-flex align-items-center"
+        >
           <span className="sidebar-icon">
             <FaPlus />
           </span>
@@ -161,3 +190,23 @@ const Sidebar = ({ onLogout }) => {
 };
 
 export default Sidebar;
+
+
+//  <div
+//           className="sidebar-link d-flex align-items-center justify-content-between"
+//           onClick={() => setOpenDropdown(!openDropdown)}
+//           style={{ cursor: "pointer" }}
+//         >
+//           <div className="d-flex align-items-center">
+//             <span className="sidebar-icon">
+//               <FaPhone />
+//             </span>
+//             Contact Leads
+//           </div>
+//           <FaChevronDown
+//             style={{
+//               transform: openDropdown ? "rotate(180deg)" : "rotate(0deg)",
+//               transition: "0.3s",
+//             }}
+//           />
+//         </div>

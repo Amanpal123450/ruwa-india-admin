@@ -30,6 +30,7 @@ import AdminMap from './Component/GetAllEmpLocation';
 import AdminUsersList from './Component/GetAllEmpLocation';
 import UsersTable from './Component/AllUser';
 import AdminFeedbacks from './Component/AdminFeedbacks';
+import ServicesAdminPanel from './Pages/ServiceAdminPanel';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -111,6 +112,7 @@ function App() {
             <Route path="/final-ads" element={<Finalpage />} />
             <Route path="/empolyee_list" element={<Allemployee/>} />
             <Route path="/empolyee_location" element={<AdminUsersList/>} />
+            <Route path="servicepage-content" element={<ServicesAdminPanel/>} />
             {/* <Route path="/allempdata" element={<AllEmpData />} />
             <Route path="/employee/:id" element={<EmployeeDetails/>} /> */}
             <Route path="*" element={<Navigate to="/Home" />} />
