@@ -129,7 +129,7 @@ const Sidebar = ({ onLogout }) => {
           </span>
           Card Applys
         </Link>
-<Link to="/servicepage-apply" className="sidebar-link">
+<Link to="/servicepage-content" className="sidebar-link">
           <span className="sidebar-icon">
             <FaCreditCard />
           </span>
