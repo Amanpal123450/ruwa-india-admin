@@ -12,7 +12,7 @@ const ServicesAdminPanel = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   // API Base URL - adjust this to match your backend
-  const API_BASE = 'http://localhost:8000/api';
+  const API_BASE = 'https://ruwa-backend.onrender.com/api';
 
   // Mock data for demonstration
   useEffect(() => {
