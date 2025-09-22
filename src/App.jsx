@@ -111,6 +111,8 @@ function App() {
             <Route path="/final-ads" element={<Finalpage />} />
             <Route path="/empolyee_list" element={<Allemployee/>} />
             <Route path="/empolyee_location" element={<AdminUsersList/>} />
+            {/* <Route path="/allempdata" element={<AllEmpData />} />
+            <Route path="/employee/:id" element={<EmployeeDetails/>} /> */}
             <Route path="*" element={<Navigate to="/Home" />} />
           </Routes>
         </div>
