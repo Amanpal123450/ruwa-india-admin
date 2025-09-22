@@ -29,6 +29,7 @@ import AllCardApply from './Component/AllCardApply';
 import AdminMap from './Component/GetAllEmpLocation';
 import AdminUsersList from './Component/GetAllEmpLocation';
 import UsersTable from './Component/AllUser';
+import AdminFeedbacks from './Component/AdminFeedbacks';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -98,6 +99,7 @@ function App() {
             <Route path="/ambulance-leads" element={<AmbulanceLeads/>} />
             <Route path="/insurance-leads" element={<InsuranceLeads/>} />
             <Route path="/card-apply" element={<AllCardApply/>} />
+            <Route path="/Feedbacks" element={<AdminFeedbacks/>} />
               {/* <Route path="/card-apply" element={<AllCardApply/>} /> */}
 
 

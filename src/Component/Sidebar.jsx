@@ -77,6 +77,16 @@ const Sidebar = ({ onLogout }) => {
           Sewa Leads
         </Link>
 
+  
+   <Link to="/Feedbacks" className="sidebar-link">
+          <span className="sidebar-icon">
+            <FaCapsules />
+          </span>
+          Feedbacks
+        </Link>
+
+
+
         <Link to="/ambulance-leads" className="sidebar-link">
           <span className="sidebar-icon">
             <FaAmbulance />
