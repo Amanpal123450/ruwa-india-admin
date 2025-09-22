@@ -29,8 +29,8 @@ import AllCardApply from './Component/AllCardApply';
 import AdminMap from './Component/GetAllEmpLocation';
 import AdminUsersList from './Component/GetAllEmpLocation';
 import UsersTable from './Component/AllUser';
-import EmployeeDetails from './Pages/EmployeeDetails';
-import AllEmpData from "./Component/AllEmpData"
+import AdminFeedbacks from './Component/AdminFeedbacks';
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -99,6 +99,7 @@ function App() {
             <Route path="/ambulance-leads" element={<AmbulanceLeads/>} />
             <Route path="/insurance-leads" element={<InsuranceLeads/>} />
             <Route path="/card-apply" element={<AllCardApply/>} />
+            {/* <Route path="/Feedbacks" element={<AdminFeedbacks/>} /> */}
               {/* <Route path="/card-apply" element={<AllCardApply/>} /> */}
 
 
@@ -110,8 +111,8 @@ function App() {
             <Route path="/final-ads" element={<Finalpage />} />
             <Route path="/empolyee_list" element={<Allemployee/>} />
             <Route path="/empolyee_location" element={<AdminUsersList/>} />
-            <Route path="/allempdata" element={<AllEmpData />} />
-            <Route path="/employee/:id" element={<EmployeeDetails/>} />
+            {/* <Route path="/allempdata" element={<AllEmpData />} />
+            <Route path="/employee/:id" element={<EmployeeDetails/>} /> */}
             <Route path="*" element={<Navigate to="/Home" />} />
           </Routes>
         </div>
