@@ -45,25 +45,7 @@ const Sidebar = ({ onLogout }) => {
       <div className="sidebar-section">
         <p className="section-title">Page Components</p>
 
-        {/* Dropdown for Contact Leads */}
-        <div
-          className="sidebar-link d-flex align-items-center justify-content-between"
-          onClick={() => setOpenDropdown(!openDropdown)}
-          style={{ cursor: "pointer" }}
-        >
-          <div className="d-flex align-items-center">
-            <span className="sidebar-icon">
-              <FaPhone />
-            </span>
-            Contact Leads
-          </div>
-          <FaChevronDown
-            style={{
-              transform: openDropdown ? "rotate(180deg)" : "rotate(0deg)",
-              transition: "0.3s",
-            }}
-          />
-        </div>
+       
 
        
        
