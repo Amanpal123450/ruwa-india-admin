@@ -121,8 +121,15 @@ const Sidebar = ({ onLogout }) => {
           </span>
           Employee location
         </Link>
+         <Link to="/allempdata" className="sidebar-link">
+          <span className="sidebar-icon">
+            <FaUserTie />
+          </span>
+          Employee Data
+        </Link>
       </div>
-
+  
+  
       <div className="sidebar-section">
         <p className="section-title">Other</p>
         <Link to="/details" className="sidebar-link d-flex align-items-center">
