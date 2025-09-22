@@ -29,8 +29,17 @@ import AllCardApply from './Component/AllCardApply';
 import AdminMap from './Component/GetAllEmpLocation';
 import AdminUsersList from './Component/GetAllEmpLocation';
 import UsersTable from './Component/AllUser';
+
+import EmployeeDetails from './Pages/EmployeeDetails';
+import AllEmpData from "./Component/AllEmpData"
+import EmployeeServicesPage from './Component/EmployeeServicesPage';
+
 import AdminFeedbacks from './Component/AdminFeedbacks';
 import ServicesAdminPanel from './Pages/ServiceAdminPanel';
+
+import HomePage from './Pages/HomePage';
+
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -101,6 +110,7 @@ function App() {
             <Route path="/insurance-leads" element={<InsuranceLeads/>} />
             <Route path="/card-apply" element={<AllCardApply/>} />
             <Route path="/Feedbacks" element={<AdminFeedbacks/>} />
+            <Route path="/homepage-content" element={<HomePage/>} />
               {/* <Route path="/card-apply" element={<AllCardApply/>} /> */}
 
 
@@ -112,9 +122,20 @@ function App() {
             <Route path="/final-ads" element={<Finalpage />} />
             <Route path="/empolyee_list" element={<Allemployee/>} />
             <Route path="/empolyee_location" element={<AdminUsersList/>} />
+
             <Route path="servicepage-content" element={<ServicesAdminPanel/>} />
             {/* <Route path="/allempdata" element={<AllEmpData />} />
             <Route path="/employee/:id" element={<EmployeeDetails/>} /> */}
+
+
+            <Route path="/allempdata" element={<AllEmpData />} />
+            
+            <Route path='/employee-services' element={<EmployeeServicesPage/>} />
+
+            <Route path="/allempdata" element={<AllEmpData />} />
+            <Route path="/employee/:id" element={<EmployeeDetails/>} />
+
+
             <Route path="*" element={<Navigate to="/Home" />} />
           </Routes>
         </div>
@@ -124,4 +145,3 @@ function App() {
 }
 
 export default App;
-// AIzaSyB29kosx7Ws9J3lWMjahStEibH3Ik5cTCA

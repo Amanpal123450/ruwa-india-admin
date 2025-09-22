@@ -9,7 +9,7 @@ function AdminFeedbacks() {
   const fetchFeedbacks = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:8000/api/feedback/admin/all", {
+      const res = await axios.get("https://ruwa-backend.onrender.com/api/feedback/admin/all", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       console.log(res);
@@ -26,7 +26,7 @@ function AdminFeedbacks() {
     console.log(id)
     try {
       await axios.put(
-        `http://localhost:8000/api/feedback/${id}/approve`,
+        `https://ruwa-backend.onrender.com/api/feedback/${id}/approve`,
         {},
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -41,7 +41,7 @@ function AdminFeedbacks() {
   // ✅ Delete Feedback
   const deleteFeedback = async (id) => {
     try {
-      await axios.delete(`http://localhost:8000/api/feedback/${id}`, {
+      await axios.delete(`https://ruwa-backend.onrender.com/api/feedback/${id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       fetchFeedbacks(); // list refresh

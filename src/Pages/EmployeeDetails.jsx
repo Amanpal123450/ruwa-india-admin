@@ -11,6 +11,12 @@ const EmployeeDetails = () => {
 
   const token = localStorage.getItem("token");
 
+  // Navigate to services page
+  // In EmployeeDetails.js
+// Navigate to services page
+const navigateToServices = () => {
+  navigate('/employee-services', { state: employee });
+};
   // Fetch attendance data for the employee
   const fetchAttendanceData = async () => {
     if (!employee?._id) return;
@@ -77,100 +83,6 @@ const EmployeeDetails = () => {
           <button className="back-btn" onClick={() => navigate(-1)}>
             ← Go Back
           </button>
-          {activeTab === 'attendance' && (
-            <div className="content-section">
-              <h3>Attendance Records</h3>
-              
-              {/* Attendance Statistics */}
-              <div className="attendance-stats">
-                <div className="stat-card">
-                  <div className="stat-number">{attendanceStats.totalDays}</div>
-                  <div className="stat-label">Total Days</div>
-                </div>
-                <div className="stat-card present">
-                  <div className="stat-number">{attendanceStats.presentDays}</div>
-                  <div className="stat-label">Present Days</div>
-                </div>
-                <div className="stat-card late">
-                  <div className="stat-number">{attendanceStats.lateDays}</div>
-                  <div className="stat-label">Late Days</div>
-                </div>
-                <div className="stat-card leave">
-                  <div className="stat-number">{attendanceStats.leaveDays}</div>
-                  <div className="stat-label">Leave Days</div>
-                </div>
-                <div className="stat-card rate">
-                  <div className="stat-number">{attendanceStats.attendanceRate}%</div>
-                  <div className="stat-label">Attendance Rate</div>
-                </div>
-              </div>
-
-              {/* Attendance Records */}
-              {attendanceLoading ? (
-                <div className="loading-section">
-                  <div className="spinner"></div>
-                  <p>Loading attendance records...</p>
-                </div>
-              ) : attendanceError ? (
-                <div className="error-section">
-                  <p>{attendanceError}</p>
-                  <button onClick={fetchAttendanceData} className="retry-btn">
-                    Retry
-                  </button>
-                </div>
-              ) : attendanceData.length > 0 ? (
-                <div className="attendance-table-container">
-                  <table className="attendance-table">
-                    <thead>
-                      <tr>
-                        <th>Date</th>
-                        <th>Check In</th>
-                        <th>Check Out</th>
-                        <th>Working Hours</th>
-                        <th>Status</th>
-                        <th>Reason</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {attendanceData.map((record, index) => (
-                        <tr key={record._id || index}>
-                          <td>{new Date(record.date).toLocaleDateString()}</td>
-                          <td>
-                            {record.checkIn 
-                              ? new Date(record.checkIn).toLocaleTimeString()
-                              : '-'
-                            }
-                          </td>
-                          <td>
-                            {record.checkOut 
-                              ? new Date(record.checkOut).toLocaleTimeString()
-                              : record.checkIn ? 'Not checked out' : '-'
-                            }
-                          </td>
-                          <td>
-                            {record.workingHours 
-                              ? `${record.workingHours} hrs`
-                              : '-'
-                            }
-                          </td>
-                          <td>
-                            <span className={`status-badge ${record.status}`}>
-                              {record.status.replace('-', ' ').toUpperCase()}
-                            </span>
-                          </td>
-                          <td>{record.leaveReason || '-'}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              ) : (
-                <div className="no-records">
-                  <p>No attendance records found for this employee.</p>
-                </div>
-              )}
-            </div>
-          )}
         </div>
         <style jsx>{`
           .no-data {
@@ -274,6 +186,12 @@ const EmployeeDetails = () => {
           >
             Attendance
           </button>
+          <button 
+            className="tab-btn services-btn"
+            onClick={navigateToServices}
+          >
+            Services Applied
+          </button>
         </div>
 
         {/* Tab Content */}
@@ -375,6 +293,101 @@ const EmployeeDetails = () => {
                   </span>
                 </div>
               </div>
+            </div>
+          )}
+
+          {activeTab === 'attendance' && (
+            <div className="content-section">
+              <h3>Attendance Records</h3>
+              
+              {/* Attendance Statistics */}
+              <div className="attendance-stats">
+                <div className="stat-card">
+                  <div className="stat-number">{attendanceStats.totalDays}</div>
+                  <div className="stat-label">Total Days</div>
+                </div>
+                <div className="stat-card present">
+                  <div className="stat-number">{attendanceStats.presentDays}</div>
+                  <div className="stat-label">Present Days</div>
+                </div>
+                <div className="stat-card late">
+                  <div className="stat-number">{attendanceStats.lateDays}</div>
+                  <div className="stat-label">Late Days</div>
+                </div>
+                <div className="stat-card leave">
+                  <div className="stat-number">{attendanceStats.leaveDays}</div>
+                  <div className="stat-label">Leave Days</div>
+                </div>
+                <div className="stat-card rate">
+                  <div className="stat-number">{attendanceStats.attendanceRate}%</div>
+                  <div className="stat-label">Attendance Rate</div>
+                </div>
+              </div>
+
+              {/* Attendance Records */}
+              {attendanceLoading ? (
+                <div className="loading-section">
+                  <div className="spinner"></div>
+                  <p>Loading attendance records...</p>
+                </div>
+              ) : attendanceError ? (
+                <div className="error-section">
+                  <p>{attendanceError}</p>
+                  <button onClick={fetchAttendanceData} className="retry-btn">
+                    Retry
+                  </button>
+                </div>
+              ) : attendanceData.length > 0 ? (
+                <div className="attendance-table-container">
+                  <table className="attendance-table">
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Check In</th>
+                        <th>Check Out</th>
+                        <th>Working Hours</th>
+                        <th>Status</th>
+                        <th>Reason</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {attendanceData.map((record, index) => (
+                        <tr key={record._id || index}>
+                          <td>{new Date(record.date).toLocaleDateString()}</td>
+                          <td>
+                            {record.checkIn 
+                              ? new Date(record.checkIn).toLocaleTimeString()
+                              : '-'
+                            }
+                          </td>
+                          <td>
+                            {record.checkOut 
+                              ? new Date(record.checkOut).toLocaleTimeString()
+                              : record.checkIn ? 'Not checked out' : '-'
+                            }
+                          </td>
+                          <td>
+                            {record.workingHours 
+                              ? `${record.workingHours} hrs`
+                              : '-'
+                            }
+                          </td>
+                          <td>
+                            <span className={`status-badge ${record.status}`}>
+                              {record.status.replace('-', ' ').toUpperCase()}
+                            </span>
+                          </td>
+                          <td>{record.leaveReason || '-'}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ) : (
+                <div className="no-records">
+                  <p>No attendance records found for this employee.</p>
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -527,6 +540,26 @@ const EmployeeDetails = () => {
         .tab-btn:hover {
           background: rgba(102, 126, 234, 0.1);
           color: #667eea;
+        }
+
+        .tab-btn.services-btn {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          border-radius: 8px 8px 0 0;
+          font-weight: 600;
+          position: relative;
+        }
+
+        .tab-btn.services-btn:hover {
+          background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+          color: white;
+          transform: translateY(-2px);
+        }
+
+        .tab-btn.services-btn::after {
+          content: "🔗";
+          margin-left: 8px;
+          font-size: 0.9rem;
         }
 
         .tab-content {
