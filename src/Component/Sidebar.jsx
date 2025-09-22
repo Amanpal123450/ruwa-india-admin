@@ -49,6 +49,8 @@ const Sidebar = ({ onLogout }) => {
           Contact Leads
         </Link>
 
+        
+
         <Link to="/kendra-leads" className="sidebar-link">
           <span className="sidebar-icon">
             <FaHome />
@@ -107,7 +109,12 @@ const Sidebar = ({ onLogout }) => {
           </span>
           Card Applys
         </Link>
-
+        <Link to="/homepage-content" className="sidebar-link">
+          <span className="sidebar-icon">
+            <FaPhone />
+          </span>
+          Home page
+        </Link>
         <Link to="/empolyee_list" className="sidebar-link">
           <span className="sidebar-icon">
             <FaUserTie />

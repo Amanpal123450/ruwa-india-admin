@@ -35,6 +35,7 @@ import AllEmpData from "./Component/AllEmpData"
 import EmployeeServicesPage from './Component/EmployeeServicesPage';
 
 import AdminFeedbacks from './Component/AdminFeedbacks';
+import HomePage from './Pages/HomePage';
 
 
 function App() {
@@ -106,6 +107,7 @@ function App() {
             <Route path="/insurance-leads" element={<InsuranceLeads/>} />
             <Route path="/card-apply" element={<AllCardApply/>} />
             <Route path="/Feedbacks" element={<AdminFeedbacks/>} />
+            <Route path="/homepage-content" element={<HomePage/>} />
               {/* <Route path="/card-apply" element={<AllCardApply/>} /> */}
 
 
