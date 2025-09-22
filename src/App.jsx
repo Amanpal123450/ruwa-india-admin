@@ -31,6 +31,7 @@ import AdminUsersList from './Component/GetAllEmpLocation';
 import UsersTable from './Component/AllUser';
 import EmployeeDetails from './Pages/EmployeeDetails';
 import AllEmpData from "./Component/AllEmpData"
+import EmployeeServicesPage from './Component/EmployeeServicesPage';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -111,7 +112,8 @@ function App() {
             <Route path="/empolyee_list" element={<Allemployee/>} />
             <Route path="/empolyee_location" element={<AdminUsersList/>} />
             <Route path="/allempdata" element={<AllEmpData />} />
-            <Route path="/employee/:id" element={<EmployeeDetails/>} />
+            
+            <Route path='/employee-services' element={<EmployeeServicesPage/>} />
             <Route path="*" element={<Navigate to="/Home" />} />
           </Routes>
         </div>
