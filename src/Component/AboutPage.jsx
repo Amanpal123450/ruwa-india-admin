@@ -14,7 +14,7 @@ const AboutPageAdmin = () => {
     fetchAboutData();
     fetchFeaturesData();
   }, []);
-
+  const token=localStorage.getItem("token")
   const fetchAboutData = async () => {
     try {
       const response = await fetch('https://ruwa-backend.onrender.com/api/aboutWelcome');
@@ -66,7 +66,7 @@ const AboutPageAdmin = () => {
       const method = aboutData._id ? 'PUT' : 'POST';
       const response = await fetch('https://ruwa-backend.onrender.com/api/aboutWelcome', {
         method,
-        headers: { 'Content-Type': 'application/json' },
+         headers: { Authorization: `Bearer ${token}` },
         body: JSON.stringify(aboutData)
       });
       
@@ -87,7 +87,7 @@ const AboutPageAdmin = () => {
       const method = featuresData._id ? 'PUT' : 'POST';
       const response = await fetch('https://ruwa-backend.onrender.com/api/aboutFeature', {
         method,
-        headers: { 'Content-Type': 'application/json' },
+        headers: { Authorization: `Bearer ${token}` },
         body: JSON.stringify(featuresData)
       });
       
