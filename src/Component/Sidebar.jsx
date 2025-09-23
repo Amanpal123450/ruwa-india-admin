@@ -117,6 +117,14 @@ const Sidebar = ({ onLogout }) => {
           </span>
           Servicepage content
         </Link>
+
+        <Link to="/aboutpage" className="sidebar-link">
+          <span className="sidebar-icon">
+            <FaCreditCard />
+          </span>
+          About Page 
+        </Link>
+
         <Link to="/homepage-content" className="sidebar-link">
           <span className="sidebar-icon">
             <FaCreditCard />
