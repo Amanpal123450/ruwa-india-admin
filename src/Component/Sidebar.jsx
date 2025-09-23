@@ -123,6 +123,12 @@ const Sidebar = ({ onLogout }) => {
           </span>
           Homepage content
         </Link>
+        <Link to="/contactpage-content" className="sidebar-link">
+          <span className="sidebar-icon">
+            <FaCreditCard />
+          </span>
+          Contactpage content
+        </Link>
         <Link to="/empolyee_list" className="sidebar-link">
           <span className="sidebar-icon">
             <FaUserTie />

@@ -38,6 +38,7 @@ import AdminFeedbacks from './Component/AdminFeedbacks';
 import ServicesAdminPanel from './Pages/ServiceAdminPanel';
 
 import HomePage from './Pages/HomePage';
+import ContactUsPage from './Pages/ContactUsPage';
 
 
 
@@ -111,6 +112,7 @@ function App() {
             <Route path="/card-apply" element={<AllCardApply/>} />
             <Route path="/Feedbacks" element={<AdminFeedbacks/>} />
             <Route path="/homepage-content" element={<HomePage/>} />
+            <Route path="/contactpage-content" element={<ContactUsPage/>} />
               {/* <Route path="/card-apply" element={<AllCardApply/>} /> */}
 
 

@@ -25,31 +25,114 @@ const HomePage = () => {
   const API_BASE = 'https://ruwa-backend.onrender.com/api';
 
   // API functions
-  const api = {
-    // Hero API
-    getHero: () => fetch(`${API_BASE}/hero-routes`).then(res => res.json()),
-    createHero: (data) => fetch(`${API_BASE}/hero-routes`, { method: 'POST', body: data }),
-    updateHero: (data) => fetch(`${API_BASE}/hero-routes`, { method: 'PUT', body: data }),
-    deleteHero: () => fetch(`${API_BASE}/hero-routes`, { method: 'DELETE' }),
+  const token = localStorage.getItem("token");
 
-    // Slides API
-    getSlides: () => fetch(`${API_BASE}/slide-routes`).then(res => res.json()),
-    createSlide: (data) => fetch(`${API_BASE}/slide-routes`, { method: 'POST', body: data }),
-    updateSlide: (id, data) => fetch(`${API_BASE}/slide-routes/${id}`, { method: 'PUT', body: data }),
-    deleteSlide: (id) => fetch(`${API_BASE}/slide-routes/${id}`, { method: 'DELETE' }),
+const api = {
+  // Hero API
+  getHero: () =>
+    fetch(`${API_BASE}/hero-routes`, {
+      headers: { Authorization: `Bearer ${token}` }
+    }).then(res => res.json()),
 
-    // Services API
-    getServices: () => fetch(`${API_BASE}/service-routes`).then(res => res.json()),
-    createService: (data) => fetch(`${API_BASE}/service-routes`, { method: 'POST', body: data }),
-    updateService: (id, data) => fetch(`${API_BASE}/service-routes/${id}`, { method: 'PUT', body: data }),
-    deleteService: (id) => fetch(`${API_BASE}/service-routes/${id}`, { method: 'DELETE' }),
+  createHero: (data) =>
+    fetch(`${API_BASE}/hero-routes`, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${token}` },
+      body: data
+    }),
 
-    // Testimonials API
-    getTestimonials: () => fetch(`${API_BASE}/testimonials-routes`).then(res => res.json()),
-    createTestimonial: (data) => fetch(`${API_BASE}/testimonials-routes`, { method: 'POST', body: data }),
-    updateTestimonial: (id, data) => fetch(`${API_BASE}/testimonials-routes/${id}`, { method: 'PUT', body: data }),
-    deleteTestimonial: (id) => fetch(`${API_BASE}/testimonials-routes/${id}`, { method: 'DELETE' }),
-  };
+  updateHero: (data) =>
+    fetch(`${API_BASE}/hero-routes`, {
+      method: "PUT",
+      headers: { Authorization: `Bearer ${token}` },
+      body: data
+    }),
+
+  deleteHero: () =>
+    fetch(`${API_BASE}/hero-routes`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${token}` }
+    }),
+
+  // Slides API
+  getSlides: () =>
+    fetch(`${API_BASE}/slide-routes`, {
+      headers: { Authorization: `Bearer ${token}` }
+    }).then(res => res.json()),
+
+  createSlide: (data) =>
+    fetch(`${API_BASE}/slide-routes`, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${token}` },
+      body: data
+    }),
+
+  updateSlide: (id, data) =>
+    fetch(`${API_BASE}/slide-routes/${id}`, {
+      method: "PUT",
+      headers: { Authorization: `Bearer ${token}` },
+      body: data
+    }),
+
+  deleteSlide: (id) =>
+    fetch(`${API_BASE}/slide-routes/${id}`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${token}` }
+    }),
+
+  // Services API
+  getServices: () =>
+    fetch(`${API_BASE}/service-routes`, {
+      headers: { Authorization: `Bearer ${token}` }
+    }).then(res => res.json()),
+
+  createService: (data) =>
+    fetch(`${API_BASE}/service-routes`, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${token}` },
+      body: data
+    }),
+
+  updateService: (id, data) =>
+    fetch(`${API_BASE}/service-routes/${id}`, {
+      method: "PUT",
+      headers: { Authorization: `Bearer ${token}` },
+      body: data
+    }),
+
+  deleteService: (id) =>
+    fetch(`${API_BASE}/service-routes/${id}`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${token}` }
+    }),
+
+  // Testimonials API
+  getTestimonials: () =>
+    fetch(`${API_BASE}/testimonials-routes`, {
+      headers: { Authorization: `Bearer ${token}` }
+    }).then(res => res.json()),
+
+  createTestimonial: (data) =>
+    fetch(`${API_BASE}/testimonials-routes`, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${token}` },
+      body: data
+    }),
+
+  updateTestimonial: (id, data) =>
+    fetch(`${API_BASE}/testimonials-routes/${id}`, {
+      method: "PUT",
+      headers: { Authorization: `Bearer ${token}` },
+      body: data
+    }),
+
+  deleteTestimonial: (id) =>
+    fetch(`${API_BASE}/testimonials-routes/${id}`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${token}` }
+    }),
+};
+
 
   // Load data on mount and tab change
   useEffect(() => {
@@ -441,7 +524,7 @@ const HomePage = () => {
             </div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {slides.map((slide) => (
+              {slides?.map((slide) => (
                 <div key={slide._id} className="bg-white rounded-lg shadow p-6">
                   {slide.src && (
                     <img src={slide.src} alt={slide.title} className="w-full h-32 object-cover rounded mb-4" />
@@ -492,7 +575,7 @@ const HomePage = () => {
             </div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {services.map((service) => (
+              {services?.map((service) => (
                 <div key={service._id} className="bg-white rounded-lg shadow p-6">
                   {service.icon && (
                     <img src={service.icon} alt={service.title} className="w-16 h-16 object-cover rounded mb-4" />
