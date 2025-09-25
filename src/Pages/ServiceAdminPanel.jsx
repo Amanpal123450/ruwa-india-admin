@@ -94,10 +94,10 @@ const ServicesAdminPanel = () => {
         }
         method = 'POST';
       }
-      
       const response = await fetch(url, {
         method,
-         headers: { Authorization: `Bearer ${token}` },
+         headers: { Authorization: `Bearer ${token}` ,
+         "Content-Type": "application/json",},
         body: JSON.stringify(data)
       });
       
