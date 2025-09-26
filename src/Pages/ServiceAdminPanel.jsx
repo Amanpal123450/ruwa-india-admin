@@ -32,9 +32,9 @@ const ServicesAdminPanel = () => {
         { name: 'icon', label: 'Icon', type: 'text', required: true },
         { name: 'title', label: 'Title', type: 'text', required: true },
         { name: 'description', label: 'Description', type: 'textarea', required: true },
-        { name: 'buttonText', label: 'Button Text', type: 'text', required: true },
-        { name: 'buttonLink', label: 'Button Link', type: 'url', required: true },
-        { name: 'btnClass', label: 'Button Class', type: 'select', options: ['btn-info', 'btn-danger', 'btn-success', 'btn-warning', 'btn-primary', 'btn-secondary'], required: true }
+        // { name: 'buttonText', label: 'Button Text', type: 'text', required: true },
+        // { name: 'buttonLink', label: 'Button Link', type: 'url', required: true },
+        // { name: 'btnClass', label: 'Button Class', type: 'select', options: ['btn-info', 'btn-danger', 'btn-success', 'btn-warning', 'btn-primary', 'btn-secondary'], required: true }
       ]
     },
     'service-features': {
@@ -60,7 +60,7 @@ const ServicesAdminPanel = () => {
     try {
       const endpoint = sections[sectionKey].endpoint;
       const response = await fetch(`${API_BASE}/${endpoint}`,{
-        headers: { Authorization: `Bearer ${token}` }
+        headers: { Authorization: `Bearer ${token}`, }
           
         
       });
@@ -97,7 +97,7 @@ const ServicesAdminPanel = () => {
       
       const response = await fetch(url, {
         method,
-         headers: { Authorization: `Bearer ${token}` },
+         headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
         body: JSON.stringify(data)
       });
       
@@ -113,7 +113,7 @@ const ServicesAdminPanel = () => {
     try {
       const response = await fetch(`${API_BASE}/${endpoint}/${id}`, {
         method: 'DELETE',
-         headers: { Authorization: `Bearer ${token}` }
+         headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" }
       });
       const result = await response.json();
       return result;
@@ -184,7 +184,7 @@ const ServicesAdminPanel = () => {
 
   const filteredData = currentSection.data.filter(item => {
     const searchableText = Object.values(item).join(' ').toLowerCase();
-    return searchableText.includes(searchTerm.toLowerCase());
+    return searchableText.includes(searchTerm.toLowerCase())
   });
 
   const getBtnClassStyle = (btnClass) => {
