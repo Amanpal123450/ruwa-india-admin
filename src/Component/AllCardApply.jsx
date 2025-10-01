@@ -6,7 +6,7 @@ const AllCardApply = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedLead, setSelectedLead] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false)
 
   const leadsPerPage = 5;
   const token = localStorage.getItem('token');
