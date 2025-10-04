@@ -83,7 +83,7 @@ const AmbulanceLeads = () => {
   const handleStatusUpdate = async (_id, newStatus) => {
   try {
     const response = await fetch(
-      `http://localhost:8000/api/services/ambulance-booking/admin/status/${_id}`,
+      `https://ruwa-backend.onrender.com/api/services/ambulance-booking/admin/status/${_id}`,
       {
         method: 'PATCH',
         headers: { 
