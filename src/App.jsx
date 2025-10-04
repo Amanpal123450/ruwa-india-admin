@@ -42,6 +42,8 @@ import HomePage from './Pages/HomePage';
 import ContactUsPage from './Pages/ContactUsPage';
 
 import AboutPageAdmin from './Component/AboutPage';
+import KendraAproovedUsers from './Pages/KendraAproovedUsers';
+import AdminOfflineKendraForm from './Pages/AdminKendraForm';
 
 
 
@@ -108,6 +110,8 @@ function App() {
             <Route path="/Popup-Leads" element={<PopupLeads/>} />
             <Route path="/kendra-leads" element={<KendraLeads/>} />
             <Route path="/getAllUser" element={<UsersTable />} />
+            <Route path="/kendra-aprooved" element={<KendraAproovedUsers />} />
+            <Route path="/admin-kendra-apply" element={<AdminOfflineKendraForm />} />
 
 
             <Route path="/sewa-leads" element={<SewaLeads/>} />

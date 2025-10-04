@@ -86,7 +86,18 @@ const Sidebar = ({ onLogout }) => {
               </span>
               Kendra Leads
             </Link>
-
+<Link to="/kendra-aprooved" className="sidebar-link">
+              <span className="sidebar-icon">
+                <FaHome />
+              </span>
+              Kendra Aprooved Leads
+            </Link>
+            <Link to="/admin-kendra-apply" className="sidebar-link">
+              <span className="sidebar-icon">
+                <FaHome />
+              </span>
+              Kendra Apply Admin
+            </Link>
             <Link to="/Popup-Leads" className="sidebar-link">
               <span className="sidebar-icon">
                 <FaUsers />
