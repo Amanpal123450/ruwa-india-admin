@@ -81,37 +81,34 @@ const AmbulanceLeads = () => {
   };
 
   const handleStatusUpdate = async (_id, newStatus) => {
-    try {
-      const response = await fetch(
-        `https://ruwa-backend.onrender.com/api/services/ambulance-booking/admin/status/${_id}`,
-        {
-          method: 'PATCH',
-          headers: { 
-            'Authorization': `Bearer ${token}`,
-            
-          },
-          body: JSON.stringify({ status: newStatus })
-        }
-      );
+  try {
+    const response = await fetch(
+      `http://localhost:8000/api/services/ambulance-booking/admin/status/${_id}`,
+      {
+        method: 'PATCH',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify({ status: newStatus }),
+      }
+    );
 
-      if (!response.ok) throw new Error('Failed to update status');
+    if (!response.ok) throw new Error('Failed to update status');
 
-      const data = await response.json();
-      
-      // Update the local state
-      setLeads((prev) => 
-        prev.map((lead) => 
-          lead._id === _id ? { ...lead, status: newStatus } : lead
-        )
-      );
+    const data = await response.json();
 
-      console.log('Status updated successfully:', data.message);
-      
-    } catch (err) {
-      console.error('Error updating status:', err);
-      alert('Failed to update status. Please try again.');
-    }
-  };
+    setLeads((prev) => 
+      prev.map((lead) => lead._id === _id ? { ...lead, status: newStatus } : lead)
+    );
+
+    console.log('Status updated successfully:', data.message);
+
+  } catch (err) {
+    console.error('Error updating status:', err);
+    alert('Failed to update status. Please try again.');
+  }
+};
 
   const handleRefresh = async () => {
     setRefreshing(true);
