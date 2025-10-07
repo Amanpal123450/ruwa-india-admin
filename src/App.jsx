@@ -44,6 +44,7 @@ import ContactUsPage from './Pages/ContactUsPage';
 import AboutPageAdmin from './Component/AboutPage';
 import KendraAproovedUsers from './Pages/KendraAproovedUsers';
 import AdminOfflineKendraForm from './Pages/AdminKendraForm';
+import JobAdminPanel from './Pages/JobAdminPanel';
 
 
 
@@ -112,7 +113,7 @@ function App() {
             <Route path="/getAllUser" element={<UsersTable />} />
             <Route path="/kendra-aprooved" element={<KendraAproovedUsers />} />
             <Route path="/admin-kendra-apply" element={<AdminOfflineKendraForm />} />
-
+            <Route path="/admin-carrier-page" element={<JobAdminPanel/>}/>
 
             <Route path="/sewa-leads" element={<SewaLeads/>} />
             <Route path="/ambulance-leads" element={<AmbulanceLeads/>} />

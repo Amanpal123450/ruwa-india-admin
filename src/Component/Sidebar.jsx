@@ -92,6 +92,12 @@ const Sidebar = ({ onLogout }) => {
               </span>
               Kendra Aprooved Leads
             </Link>
+            <Link to="/admin-carrier-page" className="sidebar-link">
+              <span className="sidebar-icon">
+                <FaHome />
+              </span>
+              Carriers Page
+            </Link>
             <Link to="/admin-kendra-apply" className="sidebar-link">
               <span className="sidebar-icon">
                 <FaHome />
