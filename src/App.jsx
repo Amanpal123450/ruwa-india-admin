@@ -45,6 +45,7 @@ import AboutPageAdmin from './Component/AboutPage';
 import KendraAproovedUsers from './Pages/KendraAproovedUsers';
 import AdminOfflineKendraForm from './Pages/AdminKendraForm';
 import JobAdminPanel from './Pages/JobAdminPanel';
+import EKYCDetailPage from './Pages/EKYCDetailsPage';
 
 
 
@@ -114,7 +115,7 @@ function App() {
             <Route path="/kendra-aprooved" element={<KendraAproovedUsers />} />
             <Route path="/admin-kendra-apply" element={<AdminOfflineKendraForm />} />
             <Route path="/admin-carrier-page" element={<JobAdminPanel/>}/>
-
+             <Route path="/ekyc/:applicationId" element={<EKYCDetailPage />} />
             <Route path="/sewa-leads" element={<SewaLeads/>} />
             <Route path="/ambulance-leads" element={<AmbulanceLeads/>} />
             <Route path="/insurance-leads" element={<InsuranceLeads/>} />

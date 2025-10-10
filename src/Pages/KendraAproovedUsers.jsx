@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FileText, Download, User, Calendar, MapPin, Briefcase, GraduationCap, Building, Eye, X, Printer } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function ApprovedApplicationsViewer() {
   const [applications, setApplications] = useState([]);
@@ -65,7 +66,7 @@ export default function ApprovedApplicationsViewer() {
         <div className="text-center border-b-2 border-gray-300 pb-6 mb-6">
           <h1 className="text-3xl font-bold text-blue-600 mb-2">APPLICATION RECEIPT</h1>
           <p className="text-gray-600">Kendra Partnership Application</p>
-          <p className="text-sm text-gray-500 mt-2">Application ID: {application._id}</p>
+          <p className="text-sm text-gray-500 mt-2">Application ID: {application.applicationId}</p>
         </div>
 
         {/* Applicant Details */}
@@ -328,6 +329,13 @@ export default function ApprovedApplicationsViewer() {
                       <Eye className="w-4 h-4" />
                       View Details
                     </button>
+                    <Link to={`/ekyc/${app.applicationId}`}
+                      
+                      className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 text-sm font-medium"
+                    >
+                      <Eye className="w-4 h-4" />
+                      View Details
+                    </Link>
                     <button
                       onClick={() => {
                         setSelectedApp(app);
