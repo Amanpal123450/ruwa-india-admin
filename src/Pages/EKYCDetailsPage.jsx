@@ -22,7 +22,7 @@ const EKYCDetailPage = () => {
       setError('');
       
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:8000/api/ekyc/admin/${applicationId}`, {
+      const response = await fetch(`https://ruwa-backend.onrender.com/api/ekyc/admin/${applicationId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
