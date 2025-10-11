@@ -50,7 +50,7 @@ const EKYCDetailPage = () => {
   const handleStatusUpdate = async (newStatus) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:8000/api/ekyc/admin/status/${applicationId}`, {
+      const response = await fetch(`https://ruwa-backend.onrender.com/api/ekyc/admin/status/${applicationId}`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,
