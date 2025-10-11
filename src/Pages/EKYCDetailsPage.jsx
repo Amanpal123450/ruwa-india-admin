@@ -49,17 +49,18 @@ const EKYCDetailPage = () => {
 
   const handleStatusUpdate = async (newStatus) => {
     try {
-      const token = localStorage.getItem('adminToken');
-      const response = await fetch(`/api/admin/ekyc/status/${ekycData._id}`, {
+      const token = localStorage.getItem('token');
+      const response = await fetch(`http://localhost:8000/api/ekyc/admin/status/${applicationId}`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({ 
-          status: newStatus,
-          remarks: `Status updated to ${newStatus} by admin`
-        })
+  ekycStatus: newStatus,
+  remarks: `Status updated to ${newStatus} by admin`
+})
+
       });
 
       if (response.ok) {
@@ -195,8 +196,8 @@ const EKYCDetailPage = () => {
           <div className="flex flex-wrap gap-2">
             <button 
               className="px-5 py-2.5 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-lg font-medium text-sm transition-all duration-200 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
-              onClick={() => handleStatusUpdate('verified')}
-              disabled={ekycData.status === 'verified'}
+              onClick={() => handleStatusUpdate('APPROVED')}
+              disabled={ekycData.status === 'APPROVED'}
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
