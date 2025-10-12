@@ -52,18 +52,36 @@ const AllCardApply = () => {
     fetchLeads();
   }, []);
 
-  const handleDelete = async (id) => {
-    if (window.confirm('Are you sure you want to delete this application?')) {
-      try {
-        // Add delete API call here if available
+ const handleDelete = async (id) => {
+  if (window.confirm("Are you sure you want to delete this application?")) {
+    try {
+      const response = await fetch(
+        `https://ruwa-backend.onrender.com/api/services/janarogya/admin/delete/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (response.ok) {
+        // Remove from local state
         setLeads((prev) => prev.filter((lead) => lead.id !== id));
         alert("Application deleted successfully!");
-      } catch (error) {
-        console.error("Error deleting application:", error);
-        alert("Failed to delete application.");
+      } else {
+        const errorData = await response.json();
+        alert(
+          `Failed to delete application: ${errorData.message || "Unknown error"}`
+        );
       }
+    } catch (error) {
+      console.error("Error deleting application:", error);
+      alert("Failed to delete application. Please try again.");
     }
-  };
+  }
+};
+
 
   const handleApproveReject = async (id, status) => {
       const token = localStorage.getItem('token');
