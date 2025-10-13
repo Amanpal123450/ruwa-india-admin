@@ -46,11 +46,11 @@ import KendraAproovedUsers from './Pages/KendraAproovedUsers';
 import AdminOfflineKendraForm from './Pages/AdminKendraForm';
 import JobAdminPanel from './Pages/JobAdminPanel';
 import EKYCDetailPage from './Pages/EKYCDetailsPage';
-<<<<<<< HEAD
+
 import CreateVendor from './Component/CreateVander';
-=======
+
 import AdminApplicationsPanel from './Pages/AppliedJobs';
->>>>>>> 1bd11132737029823e0fe42e7985a0e228875962
+
 
 
 
