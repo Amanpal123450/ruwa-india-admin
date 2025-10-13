@@ -11,7 +11,7 @@ const AdminApplicationsPanel = () => {
   const [selectedApp, setSelectedApp] = useState(null);
   const [stats, setStats] = useState(null);
 
-  const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/api/job-application';
+  const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://ruwa-backend.onrender.com/api/job-application';
 
   useEffect(() => {
     fetchApplications();
