@@ -46,7 +46,11 @@ import KendraAproovedUsers from './Pages/KendraAproovedUsers';
 import AdminOfflineKendraForm from './Pages/AdminKendraForm';
 import JobAdminPanel from './Pages/JobAdminPanel';
 import EKYCDetailPage from './Pages/EKYCDetailsPage';
+
+import CreateVendor from './Component/CreateVander';
+
 import AdminApplicationsPanel from './Pages/AppliedJobs';
+
 
 
 
@@ -128,6 +132,7 @@ function App() {
             <Route path="/contactpage-content" element={<ContactUsPage/>} />
 
             <Route path="/aboutpage" element={<AboutPageAdmin/>} />
+            <Route path="/CreateVendor" element={<CreateVendor/>} />
 
               {/* <Route path="/card-apply" element={<AllCardApply/>} /> */}
 

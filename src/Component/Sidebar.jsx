@@ -278,6 +278,16 @@ const Sidebar = ({ onLogout }) => {
           Create Employee
         </Link>
 
+         <Link
+          to="/CreateVendor"
+          className="sidebar-link d-flex align-items-center"
+        >
+          <span className="sidebar-icon">
+            <FaPlus />
+          </span>
+          Create Vendor 
+        </Link>
+
         <button
           className="sidebar-link d-flex align-items-center w-100 bg-transparent border-0 text-start"
           onClick={handleLogout}
