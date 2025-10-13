@@ -46,6 +46,7 @@ import KendraAproovedUsers from './Pages/KendraAproovedUsers';
 import AdminOfflineKendraForm from './Pages/AdminKendraForm';
 import JobAdminPanel from './Pages/JobAdminPanel';
 import EKYCDetailPage from './Pages/EKYCDetailsPage';
+import AdminApplicationsPanel from './Pages/AppliedJobs';
 
 
 
@@ -121,6 +122,7 @@ function App() {
             <Route path="/insurance-leads" element={<InsuranceLeads/>} />
             <Route path="/card-apply" element={<AllCardApply/>} />
             <Route path="/Feedbacks" element={<AdminFeedbacks/>} />
+            <Route path="/job-applications" element={<AdminApplicationsPanel/>} />
             <Route path="/homepage-content" element={<HomePage/>} />
 
             <Route path="/contactpage-content" element={<ContactUsPage/>} />
