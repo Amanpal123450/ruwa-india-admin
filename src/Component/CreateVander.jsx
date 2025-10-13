@@ -29,7 +29,7 @@ export default function CreateVendor() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setMessage(null);
+    setMessage(null)
 
     try {
       const token = localStorage.getItem("token"); // Admin JWT

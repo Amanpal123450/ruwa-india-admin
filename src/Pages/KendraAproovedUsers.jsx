@@ -286,7 +286,7 @@ export default function ApprovedApplicationsViewer() {
                     <MapPin className="w-4 h-4 text-gray-500 mt-1 flex-shrink-0" />
                     <div className="text-sm">
                       <p className="font-medium text-gray-700">{app.proposedCity}, {app.proposedState}</p>
-                      <p className="text-gray-500">{app.siteDetails.locationType}</p>
+                      <p className="text-gray-500">{app.siteDetails?.locationType}</p>
                     </div>
                   </div>
 
