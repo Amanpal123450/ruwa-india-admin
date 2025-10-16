@@ -50,6 +50,7 @@ import EKYCDetailPage from './Pages/EKYCDetailsPage';
 import CreateVendor from './Component/CreateVander';
 
 import AdminApplicationsPanel from './Pages/AppliedJobs';
+import AdminEmployeeApproval from './Pages/AprooveVendorEmployee';
 
 
 
@@ -156,6 +157,7 @@ function App() {
             <Route path='/employee-services' element={<EmployeeServicesPage/>} />
 
             <Route path="/allempdata" element={<AllEmpData />} />
+            <Route path="/aproove-vendor" element={<AdminEmployeeApproval />} />
             <Route path="/employee/:id" element={<EmployeeDetails/>} />
 
 

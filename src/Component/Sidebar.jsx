@@ -18,6 +18,7 @@ import {
   FaFileAlt,
   FaDatabase,
   FaMapMarkerAlt,
+  FaCheck,
 } from "react-icons/fa";
 
 const Sidebar = ({ onLogout }) => {
@@ -287,7 +288,15 @@ const Sidebar = ({ onLogout }) => {
           </span>
           Create Vendor 
         </Link>
-
+<Link
+          to="/aproove-vendor"
+          className="sidebar-link d-flex align-items-center"
+        >
+          <span className="sidebar-icon">
+            <FaCheck />
+          </span>
+          Aproove Employee 
+        </Link>
         <button
           className="sidebar-link d-flex align-items-center w-100 bg-transparent border-0 text-start"
           onClick={handleLogout}
